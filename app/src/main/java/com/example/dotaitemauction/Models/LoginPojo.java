@@ -4,9 +4,6 @@ public class LoginPojo{
 	private Object id;
 	private Object userName;
 
-	public void setId(Object id){
-		this.id = id;
-	}
 
 	public Object getId(){
 		return id;
