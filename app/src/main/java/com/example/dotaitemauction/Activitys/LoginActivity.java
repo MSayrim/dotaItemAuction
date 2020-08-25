@@ -1,15 +1,13 @@
-package com.example.dotaitemauction;
+package com.example.dotaitemauction.Activitys;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.dotaitemauction.Models.LoginPojo;
+import com.example.dotaitemauction.R;
 import com.example.dotaitemauction.WebApi.ManagerAll;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -73,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
                     if(response.body ().getId () !=null && response.body ().getUserName () !=null){
-                        Intent intent = new Intent ( getApplicationContext (),MainActivity.class );
+                        Intent intent = new Intent ( getApplicationContext (),MarketActivity.class );
                         intent.putExtra ( "id" , response.body ().getId ().toString () );
                         startActivity ( intent );
                         Toast.makeText ( getApplicationContext (),"giriş başarılı",Toast.LENGTH_LONG ).show ();
@@ -106,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
         userName.addTextChangedListener(new TextWatcher() {
             public void afterTextChanged(Editable s) {
 
-                if(isDataValid () ==true || isEmpty ()==true) {
+                if(isDataValid () ==true || isEmpty (userName.getText ().toString (), password.getText ().toString ())==true) {
 
                     loginButton.setEnabled (true  );
                 }else {
@@ -116,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
 
             }
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                if(isDataValid () ==true || isEmpty ()==true) {
+                if(isDataValid () ==true || isEmpty (userName.getText ().toString (), password.getText ().toString ())==true) {
 
                     loginButton.setEnabled (true  );
                 }else {
@@ -125,7 +123,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(isDataValid () ==true || isEmpty ()==true) {
+                if(isDataValid () ==true || isEmpty (userName.getText ().toString (), password.getText ().toString ())==true) {
 
                     loginButton.setEnabled (true  );
                 }else {
@@ -138,7 +136,7 @@ public class LoginActivity extends AppCompatActivity {
         password.addTextChangedListener(new TextWatcher() {
             public void afterTextChanged(Editable s) {
 
-                if(isDataValid () ==true || isEmpty ()==true) {
+                if(isDataValid () ==true || isEmpty (userName.getText ().toString (), password.getText ().toString ())==true) {
 
                     loginButton.setEnabled (true  );
                 }else {
@@ -148,7 +146,7 @@ public class LoginActivity extends AppCompatActivity {
 
             }
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                if(isDataValid () ==true || isEmpty ()==true) {
+                if(isDataValid () ==true || isEmpty (userName.getText ().toString (), password.getText ().toString ())==true) {
 
                     loginButton.setEnabled (true  );
                 }else {
@@ -157,7 +155,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(isDataValid () ==true || isEmpty ()==true) {
+                if(isDataValid () ==true || isEmpty (userName.getText ().toString (), password.getText ().toString ())==true) {
 
                     loginButton.setEnabled (true  );
                 }else {
@@ -203,14 +201,10 @@ public class LoginActivity extends AppCompatActivity {
         return password != null && password.trim ().length () > 5;
     }
 
-    private boolean isEmpty(){
+    private boolean isEmpty(String username , String password){
         result = true;
 
-        String name = " ";
-        String pass = " ";
-        name = userName.getText ().toString ();
-        pass = password.getText ().toString ();
-        if(name.equals ( " " ) && pass.equals ( " " ) ) {
+        if(username == null || password ==null ) {
             result = true;
         }
         else {

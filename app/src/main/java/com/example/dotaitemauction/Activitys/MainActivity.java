@@ -1,10 +1,12 @@
-package com.example.dotaitemauction;
+package com.example.dotaitemauction.Activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.example.dotaitemauction.R;
 
 import java.lang.reflect.Field;
 

@@ -15,4 +15,5 @@
     <string name="steam_id">Steam id</string>
     <string name="Nickname">Nickname</string>
     <string name="register">Register</string>
+    <string name="title_activity_market">MarketActivity</string>
 </resources>

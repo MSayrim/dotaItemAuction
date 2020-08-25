@@ -1,4 +1,4 @@
-package com.example.dotaitemauction;
+package com.example.dotaitemauction.Activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.text.TextWatcher;
 import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.example.dotaitemauction.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
