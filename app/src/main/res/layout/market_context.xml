@@ -2,60 +2,47 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:focusable="true">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/tumbnailPic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="TODO" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <FrameLayout
+            <TextView
+                android:id="@+id/itemName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textAlignment="center"
+                android:textSize="36sp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/tumbnailPic"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:srcCompat="@tools:sample/avatars" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/itemName"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.5"
-                            android:text="TextView"
-                            android:textAlignment="center"
-                            android:textSize="36sp" />
-
-                        <TextView
-                            android:id="@+id/itemStock"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.5"
-                            android:text="TextView"
-                            android:textAlignment="center"
-                            android:textSize="24sp" />
-                    </LinearLayout>
-
-                </LinearLayout>
-            </FrameLayout>
+            <TextView
+                android:id="@+id/itemStock"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:textAlignment="center"
+                android:textSize="24sp" />
         </LinearLayout>
-    </ScrollView>
+
+    </LinearLayout>
 
 </LinearLayout>

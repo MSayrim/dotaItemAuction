@@ -1,6 +1,7 @@
 package com.example.dotaitemauction.Adapters;
 
 import android.content.Context;
+import android.graphics.ColorSpace;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,18 +17,24 @@ import com.example.dotaitemauction.R;
 import com.squareup.picasso.Picasso;
 
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+
 
 
 public class MarketListAdapter extends BaseAdapter {
 
     private List<MarketItem> items;
     private Context context;
+    ArrayList<MarketItem> arrayList;
 
     public MarketListAdapter(List<MarketItem> items , Context context)
     {
         this.items = items;
         this.context = context;
+        this.arrayList = new ArrayList<MarketItem>();
+        this.arrayList.addAll(items);
     }
 
     @Override
@@ -61,7 +68,37 @@ public class MarketListAdapter extends BaseAdapter {
         //String pic= "https://www.3boyutlucanavar.com/wp-content/uploads/2020/assets/"+item.getItemTumbnail ();
         //Picasso.with ( context ).load ( item.getItemTumbnail ()).into (tumbnail  );
 
+        View.OnClickListener yourClickListener = new View.OnClickListener () {
+            public void onClick(View v) {
+                //put your desired action here
+                v.callOnClick();
+            }
+        };
+
 
         return convertView;
     }
+    public void filter(String charText){
+        charText = charText.toLowerCase( Locale.getDefault());
+        items.clear();
+        if (charText.length()==0){
+            items.addAll(arrayList);
+        }
+        else {
+            for (MarketItem marketItem : arrayList){
+                if (marketItem.getItemName ().toLowerCase(Locale.getDefault())
+                        .contains(charText)){
+                    items.add (marketItem);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public boolean areAllItemsEnabled() {
+        return super.areAllItemsEnabled ();
+    }
+
+
 }

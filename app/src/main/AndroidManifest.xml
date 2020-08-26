@@ -11,7 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activitys.MarketActivity"></activity>
+        <activity android:name=".Activitys.MarketDetailActivity"></activity>
+        <activity android:name=".Activitys.SellItemActivity" />
+        <activity android:name=".Activitys.UpgradeStatuActivity" />
+        <activity android:name=".Activitys.UpgradeAccountActivity" />
+        <activity android:name=".Activitys.ProfileActivity" />
+        <activity android:name=".Activitys.SaledItemActivity" />
+        <activity android:name=".Activitys.OnSaleItemActivity" />
+        <activity android:name=".Activitys.PurchaseItemActivity" />
+        <activity android:name=".Activitys.MarketActivity" />
         <activity android:name=".Activitys.RegisterActivity" />
         <activity android:name=".Activitys.LoginActivity">
             <intent-filter>

@@ -1,0 +1,45 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.afloat.MainActivity">
+    <item
+    android:id="@+id/action_settings"
+    android:orderInCategory="100"
+    android:title="@string/action_settings"
+    app:showAsAction="never" />
+    <item
+        android:id="@+id/action_profile"
+        android:orderInCategory="100"
+        android:title="@string/action_profile"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_deliver"
+        android:orderInCategory="100"
+        android:title="@string/action_deliver"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_mysells"
+        android:orderInCategory="100"
+        android:title="@string/action_mysells"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_purchase"
+        android:orderInCategory="100"
+        android:title="@string/action_purchase"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_payment_statu"
+        android:orderInCategory="100"
+        android:title="@string/action_account_payment_statu"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_upgrade"
+        android:orderInCategory="100"
+        android:title="@string/action_account_upgrades"
+        app:showAsAction="never" />
+    <item android:id="@+id/searchItem"
+        android:title="Search"
+        android:icon="@android:drawable/ic_menu_search"
+        app:showAsAction="always"
+        app:actionViewClass="android.widget.SearchView" />
+</menu>

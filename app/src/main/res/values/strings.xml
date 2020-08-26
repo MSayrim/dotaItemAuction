@@ -16,4 +16,22 @@
     <string name="Nickname">Nickname</string>
     <string name="register">Register</string>
     <string name="title_activity_market">MarketActivity</string>
+    <string name="title_activity_delete">deleteActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_profile">Profile</string>
+    <string name="action_mysells">On Sale</string>
+    <string name="action_purchase">My Purchase</string>
+    <string name="action_deliver">My Item Deliveries</string>
+    <string name="action_account_upgrades">Upgrade Account</string>
+    <string name="action_account_payment_statu">Upgrade Statu</string>
+
+    <string name="sell_item_name">Item Name</string>
+    <string name="sell_item_style">Sell Style</string>
+    <string name="sell_item_price">Price of Item</string>
+
+    <string name="profil_name">Profil Name</string>
+    <string name="profil_point">Profil Point</string>
+    <string name="profil_steam_id">Steam ID</string>
+    <string name="profil_premium_statu">Premium Statu</string>
+    <string name="profil_list_size">Your item list count</string>
 </resources>
