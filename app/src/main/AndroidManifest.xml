@@ -13,7 +13,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Activitys.MarketDetailActivity"></activity>
         <activity android:name=".Activitys.SellItemActivity" />
-        <activity android:name=".Activitys.UpgradeStatuActivity" />
         <activity android:name=".Activitys.UpgradeAccountActivity" />
         <activity android:name=".Activitys.ProfileActivity" />
         <activity android:name=".Activitys.SaledItemActivity" />

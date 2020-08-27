@@ -34,4 +34,19 @@
     <string name="profil_steam_id">Steam ID</string>
     <string name="profil_premium_statu">Premium Statu</string>
     <string name="profil_list_size">Your item list count</string>
+    <string-array name="premium_month">
+        <item>1 Month</item>
+        <item>3 Month %5 OFF</item>
+        <item>6 Month %10 OFF</item>
+        <item>9 Month %15 OFF</item>
+        <item>12 Month %25 OFF</item>
+    </string-array>
+    <string-array name="list_item">
+        <item>5 item</item>
+        <item>10 item %5 OFF</item>
+        <item>25 item %10 OFF</item>
+        <item>50 item %15 OFF</item>
+        <item>100 item %25 OFF</item>
+    </string-array>
+
 </resources>

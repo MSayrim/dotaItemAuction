@@ -1,7 +1,6 @@
 package com.example.dotaitemauction.Adapters;
 
 import android.content.Context;
-import android.graphics.ColorSpace;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.dotaitemauction.Models.MarketItem;
 import com.example.dotaitemauction.R;
-import com.squareup.picasso.Picasso;
 
 
 import java.util.ArrayList;
@@ -95,10 +92,18 @@ public class MarketListAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
+
+
     @Override
-    public boolean areAllItemsEnabled() {
-        return super.areAllItemsEnabled ();
+    public boolean areAllItemsEnabled()
+    {
+        return true;
     }
 
+    @Override
+    public boolean isEnabled(int arg0)
+    {
+        return true;
+    }
 
 }

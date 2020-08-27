@@ -2,15 +2,12 @@ package com.example.dotaitemauction.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import android.widget.Adapter;
 
 import com.example.dotaitemauction.Activitys.OnSaleItemActivity;
 import com.example.dotaitemauction.Activitys.ProfileActivity;
 import com.example.dotaitemauction.Activitys.PurchaseItemActivity;
 import com.example.dotaitemauction.Activitys.SaledItemActivity;
 import com.example.dotaitemauction.Activitys.UpgradeAccountActivity;
-import com.example.dotaitemauction.Activitys.UpgradeStatuActivity;
 
 public class IntentAdapter {
 
@@ -40,11 +37,6 @@ public class IntentAdapter {
     {
         Intent upgradeAccountIntent = new Intent (context, UpgradeAccountActivity.class );
         context.startActivity ( upgradeAccountIntent );
-    }
-    public void upgradeStatu(Context context)
-    {
-        Intent upgradeStatuIntent = new Intent (context, UpgradeStatuActivity.class );
-        context.startActivity ( upgradeStatuIntent );
     }
 
 

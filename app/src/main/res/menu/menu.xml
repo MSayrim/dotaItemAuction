@@ -27,11 +27,7 @@
         android:orderInCategory="100"
         android:title="@string/action_purchase"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/action_payment_statu"
-        android:orderInCategory="100"
-        android:title="@string/action_account_payment_statu"
-        app:showAsAction="never" />
+
     <item
         android:id="@+id/action_upgrade"
         android:orderInCategory="100"

@@ -4,9 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.dotaitemauction.Adapters.IntentAdapter;
 import com.example.dotaitemauction.Adapters.MarketListAdapter;
-import com.example.dotaitemauction.Models.MarketItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -22,7 +20,6 @@ import android.widget.SearchView;
 
 import com.example.dotaitemauction.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 
 import java.util.ArrayList;
@@ -31,7 +28,6 @@ import java.util.List;
 public class MarketActivity extends AppCompatActivity implements OnItemClickListener {
 
     ListView listView;
-    List<MarketItem> mock;
     MarketActivity marketActivity;
     MarketListAdapter marketListAdapter;
     Context context;
@@ -55,6 +51,7 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
 
 
         listView.setOnItemClickListener (MarketActivity.this);
+        //bu dogru
     }
 
     public void loader()
@@ -62,30 +59,6 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
 
 
         listView = findViewById ( R.id.marketList );
-
-        mock = new ArrayList<> (  );
-
-        mock.add ( new MarketItem ( "murat","1231",R.drawable.ic_launcher_background) );
-        mock.add ( new MarketItem ( "mura3t","123111",R.drawable.ic_launcher_background ) );
-        mock.add ( new MarketItem ( "mura2t","123331",R.drawable.ic_launcher_background ) );
-
-        mock.add ( new MarketItem ( "mura2t","123331",R.drawable.ic_launcher_background ) );
-
-        mock.add ( new MarketItem ( "mura2t","123331",R.drawable.ic_launcher_background ) );
-
-        mock.add ( new MarketItem ( "mu3ra2t","123331",R.drawable.ic_launcher_background ) );
-
-        mock.add ( new MarketItem ( "mu4ra2t","123331",R.drawable.ic_launcher_background ) );
-
-        mock.add ( new MarketItem ( "mur5a2t","123331",R.drawable.ic_launcher_background ) );
-
-        mock.add ( new MarketItem ( "mura62t","123331",R.drawable.ic_launcher_background ) );
-
-
-        marketListAdapter = new MarketListAdapter (mock,marketActivity);
-        listView.setAdapter ( marketListAdapter );
-
-
 
 
 
@@ -147,10 +120,6 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
                 Intent goIntent1 = new Intent (getApplicationContext (), OnSaleItemActivity.class );
                 startActivity ( goIntent1 );
                 return true;
-            case R.id.action_payment_statu:
-                Intent goIntent2 = new Intent (getApplicationContext (), UpgradeStatuActivity.class );
-                startActivity ( goIntent2 );
-                return true;
             case R.id.action_profile:
                 Intent goIntent3 = new Intent (getApplicationContext (), ProfileActivity.class );
                 startActivity ( goIntent3 );
@@ -167,17 +136,10 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
 
                 return super.onOptionsItemSelected(item);
         }
-
-
-
     }
-
-
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Intent intent = new Intent(getApplicationContext (),MarketDetailActivity.class );
-
-        intent.putExtra ( "category",mock.get ( i ).getItemName ());
 
         startActivity(intent);
     }
