@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activitys.MarketDetailActivity"></activity>
+        <activity android:name=".Activitys.ItemDetailActivity"></activity>
+        <activity android:name=".Activitys.MarketDetailActivity" />
         <activity android:name=".Activitys.SellItemActivity" />
         <activity android:name=".Activitys.UpgradeAccountActivity" />
         <activity android:name=".Activitys.ProfileActivity" />

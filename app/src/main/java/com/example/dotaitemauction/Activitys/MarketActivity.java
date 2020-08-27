@@ -18,12 +18,19 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SearchView;
 
+import com.example.dotaitemauction.Models.MarketAll;
+import com.example.dotaitemauction.Models.MarketItemCountPojo;
 import com.example.dotaitemauction.R;
+import com.example.dotaitemauction.WebApi.ManagerAll;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MarketActivity extends AppCompatActivity implements OnItemClickListener {
 
@@ -31,13 +38,14 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
     MarketActivity marketActivity;
     MarketListAdapter marketListAdapter;
     Context context;
+    List<MarketAll> respondOne;
+    List<MarketItemCountPojo> respondTwo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_market );
         marketActivity = this;
         Toolbar toolbar = findViewById ( R.id.toolbar );
-
         FloatingActionButton fab = findViewById ( R.id.fab);
         fab.setOnClickListener ( new View.OnClickListener () {
             @Override
@@ -46,26 +54,38 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
                 startActivity ( sellIntent );
             }
         } );
+        listView = findViewById ( R.id.marketList );
         context = getApplicationContext ();
         loader ();
-
-
         listView.setOnItemClickListener (MarketActivity.this);
-        //bu dogru
     }
 
     public void loader()
     {
+        final Call<List<MarketAll>> marketLoader = ManagerAll.getInstance().marketLoader ();
+        marketLoader.enqueue ( new Callback<List<MarketAll>> () {
+            @Override
+            public void onResponse(final Call<List<MarketAll>> call2, final Response<List<MarketAll>> response) {
+                respondOne = response.body ();
 
-
-        listView = findViewById ( R.id.marketList );
-
-
-
-
-    }
-
-
+                final Call<List<MarketItemCountPojo>> categoryList = ManagerAll.getInstance().marketItemCount ();
+                categoryList.enqueue ( new Callback<List<MarketItemCountPojo>> () {
+                    @Override
+                    public void onResponse(final Call<List<MarketItemCountPojo>> call2, final Response<List<MarketItemCountPojo>> response) {
+                        respondTwo = response.body ();
+                        marketListAdapter = new MarketListAdapter ( respondOne,getApplicationContext (),respondTwo );
+                        listView.setAdapter ( marketListAdapter );
+                    }
+                    @Override
+                    public void onFailure(Call<List<MarketItemCountPojo>> call, Throwable t) {
+                    }
+                } );
+            }
+            @Override
+            public void onFailure(Call<List<MarketAll>> call, Throwable t) {
+            }
+        } );
+        }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -93,24 +113,11 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
                 return true;
             }
         });
-
-
-
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId ();
-
-/*Intent goIntent = new Intent (getApplicationContext (), SaledItemActivity.class );
-                startActivity ( goIntent );
-
-                intentAdapter.profile ( this )*/
-
         switch (item.getItemId ()) {
             case R.id.action_deliver:
                 Intent goIntent = new Intent (getApplicationContext (), SaledItemActivity.class );
@@ -140,6 +147,7 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Intent intent = new Intent(getApplicationContext (),MarketDetailActivity.class );
+        intent.putExtra ( "curent item",respondOne.get ( i ).getProductName () );
 
         startActivity(intent);
     }

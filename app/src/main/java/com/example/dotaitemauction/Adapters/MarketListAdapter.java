@@ -5,16 +5,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.dotaitemauction.Models.MarketAll;
+import com.example.dotaitemauction.Models.MarketItemCountPojo;
 import com.example.dotaitemauction.R;
+import com.squareup.picasso.Picasso;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -22,16 +27,18 @@ import java.util.Locale;
 
 public class MarketListAdapter extends BaseAdapter {
 
-    private List<MarketItem> items;
+    private List<MarketAll> items;
     private Context context;
-    ArrayList<MarketItem> arrayList;
+    private List<MarketItemCountPojo> itemCount;
+    ArrayList<MarketAll> arrayList;
 
-    public MarketListAdapter(List<MarketItem> items , Context context)
+    public MarketListAdapter(List<MarketAll> items , Context context,List<MarketItemCountPojo> itemCount)
     {
         this.items = items;
         this.context = context;
-        this.arrayList = new ArrayList<MarketItem>();
+        this.arrayList = new ArrayList<MarketAll>();
         this.arrayList.addAll(items);
+        this.itemCount = itemCount;
     }
 
     @Override
@@ -53,17 +60,17 @@ public class MarketListAdapter extends BaseAdapter {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
 
+
+
         convertView = LayoutInflater.from ( context ).inflate ( R.layout.market_context,parent,false );
 
         TextView NameView = convertView.findViewById(R.id.itemName );
         TextView StockView = convertView.findViewById(R.id.itemStock);
         ImageView tumbnail = convertView.findViewById ( R.id.tumbnailPic );
-        MarketItem item = items.get(position);
-        NameView.setText( item.getItemName () +" " );
-        StockView.setText ( item.getItemStock () + " " );
-        tumbnail.setImageResource ( item.getItemTumbnail () );
-        //String pic= "https://www.3boyutlucanavar.com/wp-content/uploads/2020/assets/"+item.getItemTumbnail ();
-        //Picasso.with ( context ).load ( item.getItemTumbnail ()).into (tumbnail  );
+        MarketAll item = items.get(position);
+        NameView.setText( item.getProductName () +" " );
+        String pic= "https://www.3boyutlucanavar.com/connections/dotaItems/icons/"+item.getProductPic ();
+        Picasso.with ( context ).load ( pic).into (tumbnail  );
 
         View.OnClickListener yourClickListener = new View.OnClickListener () {
             public void onClick(View v) {
@@ -71,6 +78,10 @@ public class MarketListAdapter extends BaseAdapter {
                 v.callOnClick();
             }
         };
+
+                StockView.setText (itemCount.get ( position ).getItemCount () + " " );
+
+
 
 
         return convertView;
@@ -82,8 +93,8 @@ public class MarketListAdapter extends BaseAdapter {
             items.addAll(arrayList);
         }
         else {
-            for (MarketItem marketItem : arrayList){
-                if (marketItem.getItemName ().toLowerCase(Locale.getDefault())
+            for (MarketAll marketItem : arrayList){
+                if (marketItem.getProductName ().toLowerCase(Locale.getDefault())
                         .contains(charText)){
                     items.add (marketItem);
                 }
@@ -105,5 +116,8 @@ public class MarketListAdapter extends BaseAdapter {
     {
         return true;
     }
+
+
+
 
 }

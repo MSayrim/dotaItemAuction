@@ -1,7 +1,12 @@
 package com.example.dotaitemauction.WebApi;
 
 import com.example.dotaitemauction.Models.LoginPojo;
+import com.example.dotaitemauction.Models.MarketAll;
+import com.example.dotaitemauction.Models.MarketItemCountPojo;
+import com.example.dotaitemauction.Models.MarketItemPojo;
 import com.example.dotaitemauction.Models.RegisterPojo;
+
+import java.util.List;
 
 import retrofit2.Call;
 
@@ -25,4 +30,22 @@ public class ManagerAll extends BaseManager {
         Call<RegisterPojo> xy = getRestApi ().registerControl (userMail,userPass,userNick,userSteamId  );
         return xy;
     }
+
+    public Call<List<MarketAll>> marketLoader()
+    {
+        Call<List<MarketAll>> xy = getRestApi ().marketAllItem ();
+        return xy;
+    }
+    public Call<List<MarketItemPojo>> marketDetailLoader()
+    {
+        Call<List<MarketItemPojo>> xy = getRestApi ().marketLoad ();
+        return xy;
+    }
+
+    public Call<List<MarketItemCountPojo>> marketItemCount()
+    {
+        Call<List<MarketItemCountPojo>> xy = getRestApi ().marketItemCount ();
+        return xy;
+    }
+
 }

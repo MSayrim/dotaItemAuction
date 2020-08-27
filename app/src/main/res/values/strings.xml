@@ -49,4 +49,8 @@
         <item>100 item %25 OFF</item>
     </string-array>
 
+    <string name="seller_rate">RATE</string>
+    <string name="payment_metod">Payment Method</string>
+    <string name="sell_price">Price</string>
+
 </resources>
