@@ -52,5 +52,15 @@
     <string name="seller_rate">RATE</string>
     <string name="payment_metod">Payment Method</string>
     <string name="sell_price">Price</string>
+    <string name="item_count"> Item Count</string>
+
+    <string name="seller_nick">Seller Nick</string>
+
+    <string name="seller_steamid">Seller SteamID</string>
+
+    <string name="seller_price">Item Price</string>
+    <string name="seller_method">Payment Method</string>
+    <string name="seller_item_name">Item Name</string>
+
 
 </resources>

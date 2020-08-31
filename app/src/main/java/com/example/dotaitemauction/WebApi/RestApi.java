@@ -5,6 +5,7 @@ import com.example.dotaitemauction.Models.MarketAll;
 import com.example.dotaitemauction.Models.MarketItemCountPojo;
 import com.example.dotaitemauction.Models.MarketItemPojo;
 import com.example.dotaitemauction.Models.RegisterPojo;
+import com.example.dotaitemauction.Models.SellPojo;
 
 import java.util.List;
 
@@ -30,5 +31,9 @@ public interface RestApi {
 
     @retrofit2.http.GET("/connections/dotaItems//itemListAll.php")
     Call<List<MarketAll>> marketAllItem();
+
+    @FormUrlEncoded
+    @POST("/connections/dotaItems//sellItem.php")
+    Call<SellPojo> sellItem(@Field ( "itemId" ) String itemId, @Field ( "sellerId" ) String sellerId, @Field ( "count" ) String count, @Field ( "paymentType" ) String paymentType, @Field ( "price" ) String price);
 
 }

@@ -27,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText password;
     Button loginButton;
     boolean result;
+    LoginPojo currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<LoginPojo> call, Response<LoginPojo> response) {
 
                  boolean result = response.isSuccessful ();
+                 currentUser = response.body ();
 
                 if(response.isSuccessful ())
                 {
@@ -72,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     if(response.body ().getId () !=null && response.body ().getUserName () !=null){
                         Intent intent = new Intent ( getApplicationContext (),MarketActivity.class );
-                        intent.putExtra ( "id" , response.body ().getId ().toString () );
+                        intent.putExtra ( "id" , currentUser.getId ().toString () );
                         startActivity ( intent );
                         Toast.makeText ( getApplicationContext (),"giriş başarılı",Toast.LENGTH_LONG ).show ();
                         finish ();

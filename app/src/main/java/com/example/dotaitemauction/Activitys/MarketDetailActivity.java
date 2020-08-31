@@ -39,11 +39,25 @@ public class MarketDetailActivity extends AppCompatActivity implements AdapterVi
         setContentView ( R.layout.activity_market_detail );
 
         listView = (ListView) findViewById ( R.id.marketListDetailList );
+        respondOne = new ArrayList<> (  );
+
         loader ();
 
 
 
+        listView.setOnItemClickListener (MarketDetailActivity.this);
 
+
+
+    }
+
+    public void onResume(){
+        super.onResume ();
+        respondOne = new ArrayList<> (  );
+        listView = (ListView) findViewById ( R.id.marketListDetailList );
+        loader ();
+
+        listView.setOnItemClickListener (MarketDetailActivity.this);
 
     }
 
@@ -86,11 +100,14 @@ public class MarketDetailActivity extends AppCompatActivity implements AdapterVi
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Intent intent = new Intent(getApplicationContext (),ItemDetailActivity.class );
-        intent.putExtra ( "name",respondOne.get ( i ).getProductName () );
-        intent.putExtra ( "method",respondOne.get ( i ).getMethod () );
-        intent.putExtra ( "price",respondOne.get ( i ).getPrice () );
-        intent.putExtra ( "nick",respondOne.get ( i ).getSellerNick () );
-        intent.putExtra ( "steam id",respondOne.get ( i ).getSellerSteamId () );
+
+
+        intent.putExtra ( "name",respondfiltred.get ( i ).getProductName () );
+        intent.putExtra ( "method",respondfiltred.get ( i ).getMethod () );
+        intent.putExtra ( "price",respondfiltred.get ( i ).getPrice () );
+        intent.putExtra ( "nick",respondfiltred.get ( i ).getSellerNick () );
+        intent.putExtra ( "steam id",respondfiltred.get ( i ).getSellerSteamId () );
+        intent.putExtra ( "count" , respondfiltred.get ( i ).getCount () );
 
 
         startActivity(intent);

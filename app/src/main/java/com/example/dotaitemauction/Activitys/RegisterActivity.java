@@ -57,7 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-        registerPassword.addTextChangedListener(new TextWatcher () {
+        registerPasswordAgain.addTextChangedListener(new TextWatcher () {
             public void afterTextChanged(Editable s) {
 
                 if(isPasswordSame () ==true && isUserNameValid (registerMail.getText ().toString () )==true && isPasswordValid (registerPassword.getText ().toString ())==true && isNickVaild ( registerNick.getText ().toString () )==true
@@ -71,10 +71,6 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
     }
-
-
-
-
 
     public boolean register (String userMail , String userPass, String userNick , String userSteamId)
     {

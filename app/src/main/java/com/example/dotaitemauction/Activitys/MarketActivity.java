@@ -47,10 +47,14 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
         marketActivity = this;
         Toolbar toolbar = findViewById ( R.id.toolbar );
         FloatingActionButton fab = findViewById ( R.id.fab);
+
         fab.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View view) {
                 Intent sellIntent = new Intent (getApplicationContext (), SellItemActivity.class );
+                Intent idIntent=getIntent ();
+                String id = idIntent.getStringExtra ( "id" );
+                sellIntent.putExtra ( "id",id );
                 startActivity ( sellIntent );
             }
         } );
@@ -60,6 +64,24 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
         listView.setOnItemClickListener (MarketActivity.this);
     }
 
+
+/*    public void onResume() {
+        super.onResume ();
+
+        FloatingActionButton fab = findViewById ( R.id.fab);
+        fab.setOnClickListener ( new View.OnClickListener () {
+            @Override
+            public void onClick(View view) {
+                Intent sellIntent = new Intent (getApplicationContext (), SellItemActivity.class );
+                Intent idIntent=getIntent ();
+                String id = idIntent.getStringExtra ( "id" );
+                sellIntent.putExtra ( "id",id );
+                startActivity ( sellIntent );
+            }
+        } );
+        loader ();
+    }
+*/
     public void loader()
     {
         final Call<List<MarketAll>> marketLoader = ManagerAll.getInstance().marketLoader ();
@@ -146,8 +168,13 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
     }
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Intent idIntent=getIntent ();
+        String id = idIntent.getStringExtra ( "id" );
+
         Intent intent = new Intent(getApplicationContext (),MarketDetailActivity.class );
         intent.putExtra ( "curent item",respondOne.get ( i ).getProductName () );
+        intent.putExtra ( "id",id );
+
 
         startActivity(intent);
     }

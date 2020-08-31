@@ -5,6 +5,7 @@ import com.example.dotaitemauction.Models.MarketAll;
 import com.example.dotaitemauction.Models.MarketItemCountPojo;
 import com.example.dotaitemauction.Models.MarketItemPojo;
 import com.example.dotaitemauction.Models.RegisterPojo;
+import com.example.dotaitemauction.Models.SellPojo;
 
 import java.util.List;
 
@@ -46,6 +47,12 @@ public class ManagerAll extends BaseManager {
     {
         Call<List<MarketItemCountPojo>> xy = getRestApi ().marketItemCount ();
         return xy;
+    }
+
+    public Call<SellPojo> sellItem(String itemId , String sellerId, String count , String paymentType , String price)
+    {
+        Call<SellPojo> xyz = getRestApi ().sellItem (itemId,sellerId,count,paymentType,price );
+        return xyz;
     }
 
 }

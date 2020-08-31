@@ -10,6 +10,11 @@ public class MarketItemPojo{
 	private String sellerId;
 	private String productName;
 	private String sellerSteamId;
+	private String count;
+
+	public String getCount() {
+		return count;
+	}
 
 	public String getProductSale(){
 		return productSale;
@@ -59,7 +64,8 @@ public class MarketItemPojo{
 			",price = '" + price + '\'' + 
 			",sellerId = '" + sellerId + '\'' + 
 			",productName = '" + productName + '\'' + 
-			",sellerSteamId = '" + sellerSteamId + '\'' + 
+			",sellerSteamId = '" + sellerSteamId + '\'' +
+			",count ? '" + count + '\'' +
 			"}";
 		}
 }
