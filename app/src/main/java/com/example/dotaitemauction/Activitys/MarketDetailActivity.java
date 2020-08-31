@@ -50,27 +50,13 @@ public class MarketDetailActivity extends AppCompatActivity implements AdapterVi
 
 
     }
-
-    public void onResume(){
-        super.onResume ();
-        respondOne = new ArrayList<> (  );
-        listView = (ListView) findViewById ( R.id.marketListDetailList );
-        loader ();
-
-        listView.setOnItemClickListener (MarketDetailActivity.this);
-
-    }
-
     public void loader()
     {
-
-
         final Call<List<MarketItemPojo>> marketLoader = ManagerAll.getInstance().marketDetailLoader ();
         marketLoader.enqueue ( new Callback<List<MarketItemPojo>> () {
             @Override
             public void onResponse(final Call<List<MarketItemPojo>> call2, final Response<List<MarketItemPojo>> response) {
                 respondOne = response.body ();
-
 
                 Intent intent1 = getIntent ();
                 String focusItem = intent1.getStringExtra ( "curent item" );
