@@ -19,6 +19,7 @@ import com.example.dotaitemauction.R;
 import com.example.dotaitemauction.WebApi.ManagerAll;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -66,6 +67,7 @@ public class MarketDetailActivity extends AppCompatActivity implements AdapterVi
                 {
                     if(respondOne.get (i).getProductName ().equals ( focusItem ))
                     {
+                        String date = respondOne.get ( i ).getDate ();
                         respondfiltred.add ( respondOne.get ( i ) );
                     }
                 }
@@ -88,12 +90,14 @@ public class MarketDetailActivity extends AppCompatActivity implements AdapterVi
         Intent intent = new Intent(getApplicationContext (),ItemDetailActivity.class );
 
 
+        intent.putExtra ( "sellerId",respondfiltred.get ( i ).getSellerId () );
         intent.putExtra ( "name",respondfiltred.get ( i ).getProductName () );
         intent.putExtra ( "method",respondfiltred.get ( i ).getMethod () );
         intent.putExtra ( "price",respondfiltred.get ( i ).getPrice () );
         intent.putExtra ( "nick",respondfiltred.get ( i ).getSellerNick () );
         intent.putExtra ( "steam id",respondfiltred.get ( i ).getSellerSteamId () );
         intent.putExtra ( "count" , respondfiltred.get ( i ).getCount () );
+        intent.putExtra ( "itemId",respondfiltred.get ( i ).getProductId () );
 
 
         startActivity(intent);

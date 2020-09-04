@@ -1,5 +1,6 @@
 package com.example.dotaitemauction.WebApi;
 
+import com.example.dotaitemauction.Models.BuyItemModel;
 import com.example.dotaitemauction.Models.LoginPojo;
 import com.example.dotaitemauction.Models.MarketAll;
 import com.example.dotaitemauction.Models.MarketItemCountPojo;
@@ -29,11 +30,16 @@ public interface RestApi {
     @retrofit2.http.GET("/connections/dotaItems/itemCount.php")
     Call<List<MarketItemCountPojo>> marketItemCount();
 
-    @retrofit2.http.GET("/connections/dotaItems//itemListAll.php")
+    @retrofit2.http.GET("/connections/dotaItems/itemListAll.php")
     Call<List<MarketAll>> marketAllItem();
 
     @FormUrlEncoded
     @POST("/connections/dotaItems//sellItem.php")
     Call<SellPojo> sellItem(@Field ( "itemId" ) String itemId, @Field ( "sellerId" ) String sellerId, @Field ( "count" ) String count, @Field ( "paymentType" ) String paymentType, @Field ( "price" ) String price);
+
+    @FormUrlEncoded
+    @POST("/connections/dotaItems/buyedItem.php")
+    Call<BuyItemModel> buyItem(@Field ( "sellerId" ) String sellerId, @Field ( "buyerId" ) String buyerId , @Field ( "paymentMethod" ) String paymentMethod, @Field ( "price" ) String price , @Field ( "count" ) String count , @Field ( "itemId" ) String itemId , @Field ( "dogrulamaKodu") String dogrulamaKodu );
+
 
 }

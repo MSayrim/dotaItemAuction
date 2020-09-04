@@ -1,5 +1,6 @@
 package com.example.dotaitemauction.WebApi;
 
+import com.example.dotaitemauction.Models.BuyItemModel;
 import com.example.dotaitemauction.Models.LoginPojo;
 import com.example.dotaitemauction.Models.MarketAll;
 import com.example.dotaitemauction.Models.MarketItemCountPojo;
@@ -53,6 +54,12 @@ public class ManagerAll extends BaseManager {
     {
         Call<SellPojo> xyz = getRestApi ().sellItem (itemId,sellerId,count,paymentType,price );
         return xyz;
+    }
+
+    public Call<BuyItemModel> buyItem(String sellerId, String buyerId , String paymentMethod,String price ,  String count , String itemId ,  String dogrulamaKodu)
+    {
+        Call<BuyItemModel> asd = getRestApi ().buyItem ( sellerId,buyerId,paymentMethod,price,count,itemId,dogrulamaKodu );
+        return asd;
     }
 
 }

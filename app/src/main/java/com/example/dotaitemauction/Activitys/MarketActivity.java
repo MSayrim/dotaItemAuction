@@ -40,6 +40,9 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
     Context context;
     List<MarketAll> respondOne;
     List<MarketItemCountPojo> respondTwo;
+    String id;
+    Intent sellIntent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
@@ -48,40 +51,31 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
         Toolbar toolbar = findViewById ( R.id.toolbar );
         FloatingActionButton fab = findViewById ( R.id.fab);
 
+        sellIntent = new Intent (getApplicationContext (), SellItemActivity.class );
+        Intent idIntent=getIntent ();
+        id = idIntent.getStringExtra ( "id" );
+        sellIntent.putExtra ( "id",id );
         fab.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View view) {
-                Intent sellIntent = new Intent (getApplicationContext (), SellItemActivity.class );
-                Intent idIntent=getIntent ();
-                String id = idIntent.getStringExtra ( "id" );
-                sellIntent.putExtra ( "id",id );
+
+
                 startActivity ( sellIntent );
             }
         } );
         listView = findViewById ( R.id.marketList );
         context = getApplicationContext ();
-        loader ();
+
         listView.setOnItemClickListener (MarketActivity.this);
     }
 
-
-/*    public void onResume() {
+  public void onResume() {
         super.onResume ();
 
-        FloatingActionButton fab = findViewById ( R.id.fab);
-        fab.setOnClickListener ( new View.OnClickListener () {
-            @Override
-            public void onClick(View view) {
-                Intent sellIntent = new Intent (getApplicationContext (), SellItemActivity.class );
-                Intent idIntent=getIntent ();
-                String id = idIntent.getStringExtra ( "id" );
-                sellIntent.putExtra ( "id",id );
-                startActivity ( sellIntent );
-            }
-        } );
+
         loader ();
     }
-*/
+
     public void loader()
     {
         final Call<List<MarketAll>> marketLoader = ManagerAll.getInstance().marketLoader ();
@@ -140,25 +134,35 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        Intent idIntent=getIntent ();
+        String id = idIntent.getStringExtra ( "id" );
+
+
         switch (item.getItemId ()) {
             case R.id.action_deliver:
                 Intent goIntent = new Intent (getApplicationContext (), SaledItemActivity.class );
+                goIntent.putExtra ( "id" , id );
                 startActivity ( goIntent );
                 return true;
             case R.id.action_mysells:
                 Intent goIntent1 = new Intent (getApplicationContext (), OnSaleItemActivity.class );
+                goIntent1.putExtra ( "id" , id );
                 startActivity ( goIntent1 );
                 return true;
             case R.id.action_profile:
                 Intent goIntent3 = new Intent (getApplicationContext (), ProfileActivity.class );
+                goIntent3.putExtra ( "id" , id );
                 startActivity ( goIntent3 );
                 return true;
             case R.id.action_purchase:
                 Intent goIntent4 = new Intent (getApplicationContext (), PurchaseItemActivity.class );
+                goIntent4.putExtra ( "id" , id );
                 startActivity ( goIntent4 );
                 return true;
             case R.id.action_upgrade:
                 Intent goIntent5 = new Intent (getApplicationContext (), UpgradeAccountActivity.class );
+                goIntent5.putExtra ( "id" , id );
                 startActivity ( goIntent5 );
                 return true;
             default:

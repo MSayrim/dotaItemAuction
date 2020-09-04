@@ -28,6 +28,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.example.dotaitemauction.Activitys.LoginActivity.currentUserId;
+
 public class SellItemActivity extends AppCompatActivity {
 
     Button button;
@@ -77,7 +79,8 @@ public class SellItemActivity extends AppCompatActivity {
 
                 }
 
-                    seller ( tempItemId,sellerId,tempCount,tempMethod,tempPrice );
+                    seller ( tempItemId,currentUserId,tempCount,tempMethod,tempPrice );
+
 
 
             }

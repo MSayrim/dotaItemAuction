@@ -1,5 +1,7 @@
 package com.example.dotaitemauction.Models;
 
+import java.util.Date;
+
 public class MarketItemPojo{
 	private String productSale;
 	private String sellerNick;
@@ -11,9 +13,16 @@ public class MarketItemPojo{
 	private String productName;
 	private String sellerSteamId;
 	private String count;
+	private String date;
 
 	public String getCount() {
 		return count;
+	}
+
+	public String getDate() {		return date;
+	}
+
+	public void setDate(String date) {		this.date = date;
 	}
 
 	public String getProductSale(){
@@ -65,7 +74,8 @@ public class MarketItemPojo{
 			",sellerId = '" + sellerId + '\'' + 
 			",productName = '" + productName + '\'' + 
 			",sellerSteamId = '" + sellerSteamId + '\'' +
-			",count ? '" + count + '\'' +
+			",count =  '" + count + '\'' +
+					",date = '" + date+ '\'' +
 			"}";
 		}
 }
