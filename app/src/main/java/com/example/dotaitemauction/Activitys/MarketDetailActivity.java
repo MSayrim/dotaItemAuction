@@ -26,6 +26,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.example.dotaitemauction.Activitys.LoginActivity.currentUserId;
+
 public class MarketDetailActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     ListView listView;

@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,7 +18,6 @@ import com.squareup.picasso.Picasso;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -62,7 +60,7 @@ public class MarketListAdapter extends BaseAdapter {
 
 
 
-        convertView = LayoutInflater.from ( context ).inflate ( R.layout.market_context,parent,false );
+        convertView = LayoutInflater.from ( context ).inflate ( R.layout.market_content,parent,false );
 
         TextView NameView = convertView.findViewById(R.id.itemName );
         TextView StockView = convertView.findViewById(R.id.itemStock);

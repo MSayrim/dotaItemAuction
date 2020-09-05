@@ -60,6 +60,11 @@ public class SellItemActivity extends AppCompatActivity {
         methodNames.add ( "cash only" );
         methodNames.add ( "immortal trade" );
         loader ();
+
+
+
+
+
         button.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View view) {

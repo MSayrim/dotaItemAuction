@@ -40,6 +40,7 @@ public class ItemDetailActivity extends AppCompatActivity {
     EditText securityCheckText;
     Button buyButton;
     String securityCodeS;
+    String sellerId;
 
     BuyItemModel respondOne;
     @Override
@@ -73,6 +74,16 @@ public class ItemDetailActivity extends AppCompatActivity {
         itemDetailMethod.setText ( intent.getStringExtra ( "method" ) );
 
         itemDetailPrice.setText ( intent.getStringExtra ( "price" ) );
+
+        sellerId = intent.getStringExtra ( "sellerId" );
+
+
+        if(sellerId.equals ( currentUserId ))
+        {
+
+            buyButton.setEnabled ( false );
+
+        }
 
         buyButton.setOnClickListener ( new View.OnClickListener () {
             @Override

@@ -1,11 +1,13 @@
 package com.example.dotaitemauction.WebApi;
 
 import com.example.dotaitemauction.Models.BuyItemModel;
+import com.example.dotaitemauction.Models.BuyedItemPojo;
 import com.example.dotaitemauction.Models.LoginPojo;
 import com.example.dotaitemauction.Models.MarketAll;
 import com.example.dotaitemauction.Models.MarketItemCountPojo;
 import com.example.dotaitemauction.Models.MarketItemPojo;
 import com.example.dotaitemauction.Models.RegisterPojo;
+import com.example.dotaitemauction.Models.Response;
 import com.example.dotaitemauction.Models.SellPojo;
 
 import java.util.List;
@@ -61,5 +63,23 @@ public class ManagerAll extends BaseManager {
         Call<BuyItemModel> asd = getRestApi ().buyItem ( sellerId,buyerId,paymentMethod,price,count,itemId,dogrulamaKodu );
         return asd;
     }
+
+    public Call<List<BuyedItemPojo>> buyedItems(String buyerId)
+    {
+        Call<List<BuyedItemPojo>> asd = getRestApi ().buyedItems ( buyerId );
+        return asd;
+    }
+    public Call<List<BuyedItemPojo>> saledItems(String sellerId)
+    {
+        Call<List<BuyedItemPojo>> asd = getRestApi ().saledItems ( sellerId );
+        return asd;
+    }
+
+    public Call<Response> onSaleItems(String itemPrice ,String itemCount ,String command,String sellerId, String itemId)
+    {
+        Call<Response> asd = getRestApi ().onSaleItems ( itemPrice,itemCount,command,sellerId,itemId );
+        return asd;
+    }
+
 
 }

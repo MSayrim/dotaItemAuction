@@ -1,11 +1,13 @@
 package com.example.dotaitemauction.WebApi;
 
 import com.example.dotaitemauction.Models.BuyItemModel;
+import com.example.dotaitemauction.Models.BuyedItemPojo;
 import com.example.dotaitemauction.Models.LoginPojo;
 import com.example.dotaitemauction.Models.MarketAll;
 import com.example.dotaitemauction.Models.MarketItemCountPojo;
 import com.example.dotaitemauction.Models.MarketItemPojo;
 import com.example.dotaitemauction.Models.RegisterPojo;
+import com.example.dotaitemauction.Models.Response;
 import com.example.dotaitemauction.Models.SellPojo;
 
 import java.util.List;
@@ -41,5 +43,16 @@ public interface RestApi {
     @POST("/connections/dotaItems/buyedItem.php")
     Call<BuyItemModel> buyItem(@Field ( "sellerId" ) String sellerId, @Field ( "buyerId" ) String buyerId , @Field ( "paymentMethod" ) String paymentMethod, @Field ( "price" ) String price , @Field ( "count" ) String count , @Field ( "itemId" ) String itemId , @Field ( "dogrulamaKodu") String dogrulamaKodu );
 
+    @FormUrlEncoded
+    @POST("/connections/dotaItems/saled.php")
+    Call<List<BuyedItemPojo>> saledItems(@Field ( "sellerId" ) String sellerId);
+
+    @FormUrlEncoded
+    @POST("/connections/dotaItems/buyed.php")
+    Call<List<BuyedItemPojo>> buyedItems(@Field ( "buyerId" ) String buyerId);
+
+    @FormUrlEncoded
+    @POST("/connections/dotaItems/onSaleEdit.php")
+    Call<Response> onSaleItems (@Field ( "itemPrice" ) String itemPrice , @Field ( "itemCount" ) String itemCount,@Field ( "command" ) String command,@Field ( "sellerId" ) String sellerId,@Field ( "itemId" ) String itemId);
 
 }

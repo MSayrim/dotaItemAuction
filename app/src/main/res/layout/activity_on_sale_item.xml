@@ -7,7 +7,9 @@
     tools:context=".Activitys.OnSaleItemActivity">
 
     <ListView
-        android:id="@+id/OnSaleListView"
+        android:id="@+id/onSaleListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+    </ListView>
 </androidx.constraintlayout.widget.ConstraintLayout>
