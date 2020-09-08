@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#b90000</color>
+    <color name="colorPrimaryDark">#ad0000</color>
+    <color name="colorAccent">#db4d4d</color>
+    <color name="textColor">#f9e0e0</color>
+
+        <color name="dotapallet_50">#f9e0e0</color>
+        <color name="dotapallet_100">#f0b3b3</color>
+        <color name="dotapallet_200">#e68080</color>
+        <color name="dotapallet_300">#db4d4d</color>
+        <color name="dotapallet_400">#d42626</color>
+        <color name="dotapallet_500">#cc0000</color>
+        <color name="dotapallet_600">#c70000</color>
+        <color name="dotapallet_700">#c00000</color>
+        <color name="dotapallet_800">#b90000</color>
+        <color name="dotapallet_900">#ad0000</color>
+        <color name="dotapallet_A100">#ffd7d7</color>
+        <color name="dotapallet_A200">#ffa4a4</color>
+        <color name="dotapallet_A400">#ff7171</color>
+        <color name="dotapallet_A700">#ff5858</color>
+
 </resources>

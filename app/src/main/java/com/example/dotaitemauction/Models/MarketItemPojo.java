@@ -35,6 +35,46 @@ public class MarketItemPojo{
 	public void setDate(String date) {		this.date = date;
 	}
 
+	public void setProductSale(String productSale) {
+		this.productSale = productSale;
+	}
+
+	public void setSellerNick(String sellerNick) {
+		this.sellerNick = sellerNick;
+	}
+
+	public void setProductId(String productId) {
+		this.productId = productId;
+	}
+
+	public void setMethod(String method) {
+		this.method = method;
+	}
+
+	public void setRate(String rate) {
+		this.rate = rate;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+	public void setSellerId(String sellerId) {
+		this.sellerId = sellerId;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public void setSellerSteamId(String sellerSteamId) {
+		this.sellerSteamId = sellerSteamId;
+	}
+
+	public void setCount(String count) {
+		this.count = count;
+	}
+
 	public String getProductSale(){
 		return productSale;
 	}

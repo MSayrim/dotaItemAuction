@@ -47,6 +47,7 @@ public class SaledItemActivity extends AppCompatActivity {
                 respondOne = response.body ();
 
                 saledItemsAdapter = new SaledItemsAdapter ( respondOne,getApplicationContext () );
+                saledItemsAdapter.notifyDataSetChanged ();
                 listView.setAdapter ( saledItemsAdapter );
 
             }

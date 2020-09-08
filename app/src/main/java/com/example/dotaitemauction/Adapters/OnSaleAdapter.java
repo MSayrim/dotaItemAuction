@@ -1,7 +1,6 @@
 package com.example.dotaitemauction.Adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +11,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.dotaitemauction.Models.BuyedItemPojo;
 import com.example.dotaitemauction.Models.MarketItemPojo;
 import com.example.dotaitemauction.Models.Response;
 import com.example.dotaitemauction.R;
@@ -24,8 +23,6 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
-
-import static com.example.dotaitemauction.Activitys.LoginActivity.currentUserId;
 
 public class OnSaleAdapter extends BaseAdapter {
 
@@ -69,6 +66,9 @@ public class OnSaleAdapter extends BaseAdapter {
         TextView itemName = convertView.findViewById ( R.id.onSaleItemName );
         final EditText itemCount = convertView.findViewById ( R.id.onSaleItemCount );
         final EditText itemPrice = convertView.findViewById ( R.id.onSaleItemPrice );
+        final TextView itemCurrentCount = convertView.findViewById ( R.id.currentItemCount );
+
+        final TextView itemCurrentPrice = convertView.findViewById ( R.id.currentItemPrice );
         Button editButton = convertView.findViewById ( R.id.editButton );
         Button deleteButton = convertView.findViewById ( R.id.deleteButton );
 
@@ -83,8 +83,8 @@ public class OnSaleAdapter extends BaseAdapter {
 
 
         itemName.setText ( item.getProductName () + " " );
-        itemCount.setText ( item.getCount () );
-        itemPrice.setText ( item.getPrice () );
+        itemCurrentCount.setText ( item.getCount () );
+        itemCurrentPrice.setText ( item.getPrice () );
 
 
         View.OnClickListener yourClickListener = new View.OnClickListener () {
@@ -99,6 +99,16 @@ public class OnSaleAdapter extends BaseAdapter {
             public void onClick(View view) {
 
                 String value = "2";
+                String value2 = itemCount.getText ().toString ();
+
+                String value3= itemPrice.getText ().toString ();
+
+                if(!value2.equals ( "" ) ) {
+                    itemCurrentCount.setText ( itemCount.getText ().toString () );
+                }
+                if(!value3.equals ( "" ) ) {
+                    itemCurrentPrice.setText ( itemPrice.getText ().toString () );
+                }
 
                 String temp1 = itemPrice.getText ().toString ();
                 String temp2 = itemCount.getText ().toString ();

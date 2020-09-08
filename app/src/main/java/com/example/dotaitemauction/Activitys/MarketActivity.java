@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 
 import com.example.dotaitemauction.Models.MarketAll;
@@ -43,6 +44,8 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
     String id;
     Intent sellIntent;
 
+    ProgressBar loadingProgressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
@@ -50,6 +53,9 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
         marketActivity = this;
         Toolbar toolbar = findViewById ( R.id.toolbar );
         FloatingActionButton fab = findViewById ( R.id.fab);
+
+        loadingProgressBar = findViewById ( R.id.loading );
+
 
         sellIntent = new Intent (getApplicationContext (), SellItemActivity.class );
         Intent idIntent=getIntent ();
@@ -65,7 +71,7 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
         } );
         listView = findViewById ( R.id.marketList );
         context = getApplicationContext ();
-
+        setSupportActionBar(toolbar);
         listView.setOnItemClickListener (MarketActivity.this);
     }
 
@@ -91,6 +97,8 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
                         respondTwo = response.body ();
                         marketListAdapter = new MarketListAdapter ( respondOne,getApplicationContext (),respondTwo );
                         listView.setAdapter ( marketListAdapter );
+
+
                     }
                     @Override
                     public void onFailure(Call<List<MarketItemCountPojo>> call, Throwable t) {

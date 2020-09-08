@@ -9,12 +9,14 @@ import com.example.dotaitemauction.WebApi.ManagerAll;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import retrofit2.Call;
@@ -29,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     boolean result;
     LoginPojo currentUser;
     public static String currentUserId;
-
+    ProgressBar loadingProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
@@ -38,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         userName = (EditText) findViewById ( R.id.username );
         password = (EditText) findViewById ( R.id.passwordField );
         loginButton = (Button) findViewById ( R.id.login );
+        loadingProgressBar = findViewById ( R.id.loading );
         buttonActivate ();
 
         loginButton.setOnClickListener ( new View.OnClickListener () {
@@ -46,6 +49,9 @@ public class LoginActivity extends AppCompatActivity {
 
                 if(isDataValid () == true) {
                     login ( userName.getText ().toString (), password.getText ().toString () );
+
+                    loadingProgressBar.setVisibility ( View.VISIBLE );
+
                 }
                 else {
                     register ();
@@ -74,12 +80,25 @@ public class LoginActivity extends AppCompatActivity {
 
 
                     if(response.body ().getId () !=null && response.body ().getUserName () !=null){
-                        Intent intent = new Intent ( getApplicationContext (),MarketActivity.class );
-                        intent.putExtra ( "id" , currentUser.getId ().toString () );
-                        currentUserId = currentUser.getId ().toString ();
-                        startActivity ( intent );
+
                         Toast.makeText ( getApplicationContext (),"giriş başarılı",Toast.LENGTH_LONG ).show ();
-                        finish ();
+
+
+
+                        new Handler (  ).postDelayed ( new Runnable () {
+                            @Override
+                            public void run() {
+
+                                Intent intent = new Intent ( getApplicationContext (),MarketActivity.class );
+                                intent.putExtra ( "id" , currentUser.getId ().toString () );
+                                currentUserId = currentUser.getId ().toString ();
+                                startActivity ( intent );
+
+                                loadingProgressBar.setVisibility ( View.GONE );
+                                finish ();
+                            }
+                        },3400 );
+
                     }
                     else {
 

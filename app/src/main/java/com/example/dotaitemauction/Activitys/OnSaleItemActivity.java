@@ -1,6 +1,7 @@
 package com.example.dotaitemauction.Activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -57,8 +58,6 @@ public class OnSaleItemActivity extends AppCompatActivity {
             public void onResponse(final Call<List<MarketItemPojo>> call2, final Response<List<MarketItemPojo>> response) {
                 respondOne = response.body ();
 
-                Intent intent1 = getIntent ();
-                String focusItem = intent1.getStringExtra ( "curent item" );
 
                 respondfiltred = new ArrayList<> (  );
                 for(int i = 0 ; i<respondOne.size ();i++)

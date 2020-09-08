@@ -9,22 +9,36 @@
     <ListView
         android:id="@+id/marketList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
 
-        />
+        >
+
+    </ListView>
+
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:popupTheme="@style/AppTheme.PopupOverlay" />
+        android:layout_gravity="bottom"
+        android:background="@color/colorPrimary" />
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
+        android:background="@color/dotapallet_400"
+        android:backgroundTint="@color/dotapallet_400"
+        android:backgroundTintMode="src_over"
         android:src="@android:drawable/ic_input_add"
-        tools:ignore="MissingConstraints" />
+        android:tint="@color/dotapallet_50"
+        app:backgroundTint="@color/dotapallet_400"
+        app:layout_anchor="@+id/toolbar"
+        app:layout_anchorGravity="top|center"
+        app:maxImageSize="35dp"
+        app:tint="@color/dotapallet_50" />
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
