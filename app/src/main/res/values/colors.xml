@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#b90000</color>
-    <color name="colorPrimaryDark">#ad0000</color>
-    <color name="colorAccent">#db4d4d</color>
-    <color name="textColor">#f9e0e0</color>
+    <color name="colorPrimary">#4582a5</color>
+    <color name="colorPrimaryDark">#025676</color>
+    <color name="colorPrimaryLight">#77b1d6</color>
+    <color name="colorAccent">#d2e885</color>
+
+    <color name="colorAccentLight">#ffffb6</color>
+
+    <color name="colorAccentDark">#9fb656</color>
+    <color name="textOnP">#000000</color>
+    <color name="textOnS">#000000</color>
 
         <color name="dotapallet_50">#f9e0e0</color>
         <color name="dotapallet_100">#f0b3b3</color>

@@ -45,7 +45,7 @@ public class PurchaseItemActivity extends AppCompatActivity {
 
                 respondOne = response.body ();
 
-                saledItemsAdapter = new SaledItemsAdapter ( respondOne,getApplicationContext () );
+                saledItemsAdapter = new SaledItemsAdapter ( respondOne,getApplicationContext (),"5" );
                 listView.setAdapter ( saledItemsAdapter );
 
             }

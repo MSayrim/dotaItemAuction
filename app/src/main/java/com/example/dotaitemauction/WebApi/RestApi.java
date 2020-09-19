@@ -6,9 +6,11 @@ import com.example.dotaitemauction.Models.LoginPojo;
 import com.example.dotaitemauction.Models.MarketAll;
 import com.example.dotaitemauction.Models.MarketItemCountPojo;
 import com.example.dotaitemauction.Models.MarketItemPojo;
+import com.example.dotaitemauction.Models.RatePojo;
 import com.example.dotaitemauction.Models.RegisterPojo;
 import com.example.dotaitemauction.Models.Response;
 import com.example.dotaitemauction.Models.SellPojo;
+import com.example.dotaitemauction.Models.UserRate;
 
 import java.util.List;
 
@@ -54,5 +56,13 @@ public interface RestApi {
     @FormUrlEncoded
     @POST("/connections/dotaItems/onSaleEdit.php")
     Call<Response> onSaleItems (@Field ( "itemPrice" ) String itemPrice , @Field ( "itemCount" ) String itemCount,@Field ( "command" ) String command,@Field ( "sellerId" ) String sellerId,@Field ( "itemId" ) String itemId);
+
+    @FormUrlEncoded
+    @POST("/connections/dotaItems/ratenow.php")
+    Call<RatePojo> rateUser(@Field ( "ratedItem" ) String ratedItem , @Field ( "whoRate" ) String whoRate , @Field ( "ratePosition" ) String ratePosition , @Field ( "ratedUser" ) String ratedUser, @Field ( "rate" ) String rate);
+
+    @FormUrlEncoded
+    @POST("/connections/dotaItems/rateget.php")
+    Call<UserRate> rateGet(@Field ( "userId" ) String  userId);
 
 }

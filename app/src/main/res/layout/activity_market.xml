@@ -10,18 +10,17 @@
         android:id="@+id/marketList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        >
+        android:layout_marginBottom="40dp">
 
     </ListView>
 
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@color/colorPrimary" />
+        android:backgroundTint="@color/colorPrimary"/>
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -29,16 +28,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
-        android:background="@color/dotapallet_400"
-        android:backgroundTint="@color/dotapallet_400"
         android:backgroundTintMode="src_over"
         android:src="@android:drawable/ic_input_add"
-        android:tint="@color/dotapallet_50"
-        app:backgroundTint="@color/dotapallet_400"
         app:layout_anchor="@+id/toolbar"
         app:layout_anchorGravity="top|center"
-        app:maxImageSize="35dp"
-        app:tint="@color/dotapallet_50" />
+        app:maxImageSize="35dp" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dotaitemauction.Models.MarketItemPojo;
 import com.example.dotaitemauction.Models.Response;
+import com.example.dotaitemauction.Models.UserRate;
 import com.example.dotaitemauction.R;
 import com.example.dotaitemauction.WebApi.ManagerAll;
 
@@ -110,8 +111,8 @@ public class OnSaleAdapter extends BaseAdapter {
                     itemCurrentPrice.setText ( itemPrice.getText ().toString () );
                 }
 
-                String temp1 = itemPrice.getText ().toString ();
-                String temp2 = itemCount.getText ().toString ();
+                String temp1 = itemCurrentPrice.getText ().toString ();
+                String temp2 = itemCurrentCount.getText ().toString ();
                 String temp3 = item.getSellerId ();
                 String temp4 = item.getProductId () ;
 
@@ -159,5 +160,7 @@ public class OnSaleAdapter extends BaseAdapter {
 
         } );
     }
+
+
 
 }

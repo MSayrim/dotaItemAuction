@@ -1,11 +1,16 @@
 package com.example.dotaitemauction.Adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +20,7 @@ import com.example.dotaitemauction.Models.MarketAll;
 import com.example.dotaitemauction.Models.MarketItemCountPojo;
 import com.example.dotaitemauction.R;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 
 import java.util.ArrayList;
@@ -60,16 +66,17 @@ public class MarketListAdapter extends BaseAdapter {
 
 
 
+
+
         convertView = LayoutInflater.from ( context ).inflate ( R.layout.market_content,parent,false );
+
 
         TextView NameView = convertView.findViewById(R.id.itemName );
         TextView StockView = convertView.findViewById(R.id.itemStock);
-        ImageView tumbnail = convertView.findViewById ( R.id.tumbnailPic );
         MarketAll item = items.get(position);
         NameView.setText( item.getProductName () +" " );
-        String pic= "https://www.3boyutlucanavar.com/connections/dotaItems/icons/"+item.getProductPic ();
-        Picasso.with ( context ).load ( pic).into (tumbnail  );
-
+        StockView.setText (itemCount.get ( position ).getItemCount () + " " );
+        String pic= "https://www.3boyutlucanavar.com/connections/dotaItems/itemPics/"+item.getProductPic ();
         View.OnClickListener yourClickListener = new View.OnClickListener () {
             public void onClick(View v) {
                 //put your desired action here
@@ -77,7 +84,32 @@ public class MarketListAdapter extends BaseAdapter {
             }
         };
 
-                StockView.setText (itemCount.get ( position ).getItemCount () + " " );
+
+
+
+//.transform ( new RoundedTransformation (15,5) )
+
+        final View finalConvertView = convertView;
+        Picasso.with(context).load(pic).into( new Target (){
+            @Override
+            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                finalConvertView.setBackground(new BitmapDrawable (context.getResources(), bitmap));
+            }
+
+            @Override
+            public void onBitmapFailed(final Drawable errorDrawable) {
+                Log.d("TAG", "FAILED");
+            }
+
+            @Override
+            public void onPrepareLoad(final Drawable placeHolderDrawable) {
+                Log.d("TAG", "Prepare Load");
+            }
+
+        });
+
+
+
 
 
 

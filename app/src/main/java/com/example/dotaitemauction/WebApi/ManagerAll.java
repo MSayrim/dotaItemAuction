@@ -6,9 +6,11 @@ import com.example.dotaitemauction.Models.LoginPojo;
 import com.example.dotaitemauction.Models.MarketAll;
 import com.example.dotaitemauction.Models.MarketItemCountPojo;
 import com.example.dotaitemauction.Models.MarketItemPojo;
+import com.example.dotaitemauction.Models.RatePojo;
 import com.example.dotaitemauction.Models.RegisterPojo;
 import com.example.dotaitemauction.Models.Response;
 import com.example.dotaitemauction.Models.SellPojo;
+import com.example.dotaitemauction.Models.UserRate;
 
 import java.util.List;
 
@@ -81,5 +83,16 @@ public class ManagerAll extends BaseManager {
         return asd;
     }
 
+    public Call<RatePojo> rateUser(String ratedItem , String whoRate , String ratePosition , String ratedUser, String rate)
+    {
+        Call<RatePojo> asd = getRestApi ().rateUser ( ratedItem,whoRate,ratePosition,ratedUser,rate );
+        return asd;
+    }
+
+    public Call<UserRate> userRate(String userId)
+    {
+        Call<UserRate> asd = getRestApi ().rateGet ( userId );
+        return asd;
+    }
 
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:focusableInTouchMode="false"
@@ -29,7 +30,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:ems="10" />
+                android:ems="10"
+                android:textColor="@color/textOnP"
+                android:textSize="24sp"
+                tools:text="deneme" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -50,17 +54,22 @@
 
                     <TextView
                         android:id="@+id/textView13"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Current Item Count" />
+                        android:text="Current Item Count :"
+                        android:textColor="@color/textOnP"
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/currentItemCount"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="TextView" />
+                        android:text="TextView"
+                        android:textAlignment="viewEnd"
+                        android:textColor="@color/textOnP"
+                        android:textSize="18sp" />
 
 
                 </LinearLayout>
@@ -81,7 +90,9 @@
                         android:importantForAutofill="no"
                         android:inputType="number"
                         android:singleLine="true"
-                        android:windowSoftInputMode="adjustPan" />
+                        android:textColor="@color/textOnP"
+                        android:windowSoftInputMode="adjustPan"
+                        tools:text="deneme" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -105,17 +116,22 @@
 
                     <TextView
                         android:id="@+id/textView27"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Current Item Price" />
+                        android:text="Current Item Price :"
+                        android:textColor="@color/textOnP"
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/currentItemPrice"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="TextView" />
+                        android:text="TextView"
+                        android:textAlignment="viewEnd"
+                        android:textColor="@color/textOnP"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -135,6 +151,7 @@
                         android:importantForAutofill="no"
                         android:inputType="text"
                         android:singleLine="true"
+                        android:textColor="@color/textOnP"
                         android:windowSoftInputMode="adjustPan" />
                 </LinearLayout>
 
@@ -145,25 +162,35 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.35"
-            android:focusable="false"
-
-            android:focusableInTouchMode="false"
+            android:layout_weight="0.30"
             android:clickable="false"
+
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:orientation="vertical">
 
             <Button
                 android:id="@+id/editButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginBottom="6dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/colorAccent"
                 android:text="Düzenle" />
 
             <Button
                 android:id="@+id/deleteButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginBottom="6dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/dotapallet_900"
                 android:text="sil" />
         </LinearLayout>
 
