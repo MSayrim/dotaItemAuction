@@ -1,199 +1,248 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:focusableInTouchMode="false"
-    android:focusable="false"
     android:clickable="false"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
+    android:touchscreenBlocksFocus="true"
     android:orientation="vertical">
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/frameLay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clickable="false"
-        android:focusableInTouchMode="false"
         android:focusable="false"
-        android:orientation="horizontal">
+        android:focusableInTouchMode="false"
+        android:touchscreenBlocksFocus="true"
+        >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"
-            android:focusableInTouchMode="false"
-            android:focusable="false"
-            android:clickable="false"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/onSaleItemName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:textColor="@color/textOnP"
-                android:textSize="24sp"
-                tools:text="deneme" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:focusableInTouchMode="false"
-                android:clickable="false"
-                android:focusable="false"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:clickable="false"
-                    android:focusableInTouchMode="false"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView13"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Current Item Count :"
-                        android:textColor="@color/textOnP"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/currentItemCount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="TextView"
-                        android:textAlignment="viewEnd"
-                        android:textColor="@color/textOnP"
-                        android:textSize="18sp" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clickable="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/onSaleItemCount"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusable="auto"
-                        android:importantForAutofill="no"
-                        android:inputType="number"
-                        android:singleLine="true"
-                        android:textColor="@color/textOnP"
-                        android:windowSoftInputMode="adjustPan"
-                        tools:text="deneme" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:clickable="false"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:clickable="false"
-                    android:focusableInTouchMode="false"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView27"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Current Item Price :"
-                        android:textColor="@color/textOnP"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/currentItemPrice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="TextView"
-                        android:textAlignment="viewEnd"
-                        android:textColor="@color/textOnP"
-                        android:textSize="18sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clickable="false"
-                    android:focusable="false"
-
-                    android:focusableInTouchMode="false"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/onSaleItemPrice"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusable="auto"
-                        android:importantForAutofill="no"
-                        android:inputType="text"
-                        android:singleLine="true"
-                        android:textColor="@color/textOnP"
-                        android:windowSoftInputMode="adjustPan" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.30"
-            android:clickable="false"
+            android:background="@drawable/rounded_shape"
 
+            android:clickable="false"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:orientation="vertical">
+            android:touchscreenBlocksFocus="true"
+            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/editButton"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="6dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginRight="6dp"
-                android:layout_marginBottom="6dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/colorAccent"
-                android:text="Düzenle" />
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="0.1"
 
-            <Button
-                android:id="@+id/deleteButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="6dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginRight="6dp"
-                android:layout_marginBottom="6dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/dotapallet_900"
-                android:text="sil" />
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:touchscreenBlocksFocus="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/onSaleItemName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:ems="10"
+                    android:textColor="#E4FFFFFF"
+                    android:textSize="24sp"
+                    tools:text="deneme" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:touchscreenBlocksFocus="true"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:touchscreenBlocksFocus="true"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView13"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:clickable="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:touchscreenBlocksFocus="true"
+                            android:text="Current Item Count :"
+                            android:textColor="#E4FFFFFF"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/currentItemCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:clickable="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:touchscreenBlocksFocus="true"
+                            android:text="TextView"
+                            android:textAlignment="viewEnd"
+                            android:textColor="#E4FFFFFF"
+                            android:textSize="18sp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:touchscreenBlocksFocus="true"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/onSaleItemCount"
+                            style="@android:style/Widget.Holo.EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:singleLine="true"
+                            android:textColor="#E4FFFFFF"
+                            tools:text="deneme" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:touchscreenBlocksFocus="true"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:touchscreenBlocksFocus="true"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView27"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:clickable="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:touchscreenBlocksFocus="true"
+                            android:text="Current Item Price :"
+                            android:textColor="#E4FFFFFF"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/currentItemPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:clickable="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:touchscreenBlocksFocus="true"
+
+                            android:text="TextView"
+                            android:textAlignment="viewEnd"
+                            android:textColor="#E4FFFFFF"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:touchscreenBlocksFocus="true"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/onSaleItemPrice"
+                            style="@android:style/Widget.Holo.EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:singleLine="true"
+                            android:textColor="#E4FFFFFF" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.30"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:touchscreenBlocksFocus="true"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/editButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/colorAccent"
+                    android:text="Düzenle" />
+
+                <Button
+                    android:id="@+id/deleteButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/dotapallet_300"
+                    android:text="sil" />
+            </LinearLayout>
+
         </LinearLayout>
-
-    </LinearLayout>
+    </FrameLayout>
 
 </LinearLayout>

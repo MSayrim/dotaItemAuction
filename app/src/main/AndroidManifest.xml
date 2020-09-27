@@ -9,10 +9,11 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:windowSoftInputMode="adjustPan"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".Activitys.ItemDetailActivity"></activity>
+        android:theme="@style/AppTheme"
+        android:windowSoftInputMode="adjustPan">
+        <activity android:name=".Activitys.SettingsActivity"></activity>
+        <activity android:name=".Activitys.ItemDetailActivity" />
         <activity android:name=".Activitys.MarketDetailActivity" />
         <activity android:name=".Activitys.SellItemActivity" />
         <activity android:name=".Activitys.UpgradeAccountActivity" />
@@ -29,7 +30,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activitys.MainActivity" />
     </application>
 
 </manifest>

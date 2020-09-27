@@ -56,14 +56,13 @@
             android:textColor="#000000"
             android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/pointView"
-            android:layout_width="match_parent"
+        <RatingBar
+            android:id="@+id/profilRate"
+            style="@android:style/Widget.Material.RatingBar"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="36sp" />
+            android:layout_gravity="center"
+            android:numStars="5" />
 
         <TextView
             android:id="@+id/textView10"
@@ -76,24 +75,6 @@
 
         <TextView
             android:id="@+id/premiumStatuView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="36sp" />
-
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/profil_list_size"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/listSizeView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"

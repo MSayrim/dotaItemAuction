@@ -1,23 +1,32 @@
 package com.example.dotaitemauction.Adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dotaitemauction.Models.MarketAll;
 import com.example.dotaitemauction.Models.MarketItemPojo;
 import com.example.dotaitemauction.Models.Response;
 import com.example.dotaitemauction.Models.UserRate;
 import com.example.dotaitemauction.R;
 import com.example.dotaitemauction.WebApi.ManagerAll;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,23 +71,42 @@ public class OnSaleAdapter extends BaseAdapter {
 
 
         convertView = LayoutInflater.from ( context ).inflate ( R.layout.on_sale_content, parent, false );
+       // convertView = LayoutInflater.from ( context ).inflate ( R.layout.test_content, parent, false );
 
 
+        final MarketItemPojo item = items.get ( position );
         TextView itemName = convertView.findViewById ( R.id.onSaleItemName );
         final EditText itemCount = convertView.findViewById ( R.id.onSaleItemCount );
         final EditText itemPrice = convertView.findViewById ( R.id.onSaleItemPrice );
         final TextView itemCurrentCount = convertView.findViewById ( R.id.currentItemCount );
-
         final TextView itemCurrentPrice = convertView.findViewById ( R.id.currentItemPrice );
         Button editButton = convertView.findViewById ( R.id.editButton );
         Button deleteButton = convertView.findViewById ( R.id.deleteButton );
+        final FrameLayout frameLayout = convertView.findViewById ( R.id.frameLay );
+        String pic= "https://www.3boyutlucanavar.com/connections/dotaItems/itemPics/"+item.getProductImage () ;
 
 
 
+        Picasso.with(context).load(pic).into( new Target (){
+            @Override
+            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                frameLayout.setBackground(new BitmapDrawable (context.getResources(), bitmap));
+            }
+
+            @Override
+            public void onBitmapFailed(final Drawable errorDrawable) {
+                Log.d("TAG", "FAILED");
+            }
+
+            @Override
+            public void onPrepareLoad(final Drawable placeHolderDrawable) {
+                Log.d("TAG", "Prepare Load");
+            }
+
+        });
 
 
 
-        final MarketItemPojo item = items.get ( position );
 
 
 
@@ -136,6 +164,12 @@ public class OnSaleAdapter extends BaseAdapter {
 
             }
         } );
+
+
+
+
+
+
 
 
         return convertView;

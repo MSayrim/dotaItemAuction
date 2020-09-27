@@ -1,6 +1,10 @@
 package com.example.dotaitemauction.Adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +23,8 @@ import com.example.dotaitemauction.Models.Response;
 import com.example.dotaitemauction.Models.UserRate;
 import com.example.dotaitemauction.R;
 import com.example.dotaitemauction.WebApi.ManagerAll;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -116,6 +122,9 @@ public class SaledItemsAdapter extends BaseAdapter {
                     }
                 }
             } );
+
+
+
 
 
             View.OnClickListener yourClickListener = new View.OnClickListener () {

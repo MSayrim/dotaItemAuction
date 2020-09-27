@@ -6,9 +6,11 @@ import com.example.dotaitemauction.Models.LoginPojo;
 import com.example.dotaitemauction.Models.MarketAll;
 import com.example.dotaitemauction.Models.MarketItemCountPojo;
 import com.example.dotaitemauction.Models.MarketItemPojo;
+import com.example.dotaitemauction.Models.ProfilPojo;
 import com.example.dotaitemauction.Models.RatePojo;
 import com.example.dotaitemauction.Models.RegisterPojo;
 import com.example.dotaitemauction.Models.Response;
+import com.example.dotaitemauction.Models.ResultPojo;
 import com.example.dotaitemauction.Models.SellPojo;
 import com.example.dotaitemauction.Models.UserRate;
 
@@ -94,5 +96,30 @@ public class ManagerAll extends BaseManager {
         Call<UserRate> asd = getRestApi ().rateGet ( userId );
         return asd;
     }
+
+    public Call<ProfilPojo> profil(String userId)
+    {
+        Call<ProfilPojo> asd = getRestApi ().profilGet ( userId );
+        return asd;
+    }
+
+
+    public Call<ResultPojo> updateMail(String id , String password, String newMail)
+    {
+        Call<ResultPojo> asd = getRestApi ().updateMail ( id,password,newMail );
+        return asd;
+    }
+    public Call<ResultPojo> updateNick(String id ,String password,String newNick )
+    {
+        Call<ResultPojo> asd = getRestApi ().updateMail ( id,password,newNick );
+        return asd;
+    }
+
+    public Call<ResultPojo> updatePass(String id ,String password,String newPass )
+    {
+        Call<ResultPojo> asd = getRestApi ().updateMail ( id,password,newPass );
+        return asd;
+    }
+
 
 }

@@ -173,6 +173,11 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
                 goIntent5.putExtra ( "id" , id );
                 startActivity ( goIntent5 );
                 return true;
+            case R.id.action_settings:
+                Intent goIntent6 = new Intent (getApplicationContext (), SettingsActivity.class );
+                goIntent6.putExtra ( "id" , id );
+                startActivity ( goIntent6 );
+                return true;
             default:
 
                 return super.onOptionsItemSelected(item);

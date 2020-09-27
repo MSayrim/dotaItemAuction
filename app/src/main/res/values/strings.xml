@@ -63,4 +63,17 @@
     <string name="seller_item_name">Item Name</string>
 
 
+    <string name="password_hint_one">enter new password</string>
+    <string name="password_hint_two">enter new password again</string>
+    <string name="password_hint_main">enter current password</string>
+
+    <string name="nick_hint_one">enter new nickname</string>
+    <string name="nick_hint_two">enter new nickname again</string>
+
+    <string name="mail_hint_one">enter new mail adress</string>
+    <string name="mail_hint_two">enter new mail again</string>
+
+
+    <string name="submit_button">submit</string>
+    <string name="cancel_button">cancel</string>
 </resources>

@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import com.example.dotaitemauction.Adapters.MarketListDetailAdapter;
 import com.example.dotaitemauction.Adapters.OnSaleAdapter;
+import com.example.dotaitemauction.Models.MarketAll;
 import com.example.dotaitemauction.Models.MarketItemPojo;
 import com.example.dotaitemauction.R;
 import com.example.dotaitemauction.WebApi.ManagerAll;
@@ -38,10 +39,6 @@ public class OnSaleItemActivity extends AppCompatActivity {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_on_sale_item );
         listView = (ListView) findViewById ( R.id.onSaleListView );
-
-
-
-
         loader ();
 
 
@@ -66,12 +63,50 @@ public class OnSaleItemActivity extends AppCompatActivity {
                     {
                         String date = respondOne.get ( i ).getDate ();
                         respondfiltred.add ( respondOne.get ( i ) );
+
+
+
+
+                        final retrofit2.Call<List<MarketAll>> marketLoader = ManagerAll.getInstance().marketLoader ();
+                        final int finalI = i;
+                        marketLoader.enqueue ( new Callback<
+                                List<MarketAll>> () {
+                            @Override
+                            public void onResponse(final retrofit2.Call<List<MarketAll>> call2, final retrofit2.Response<
+                                    List<MarketAll>> response2) {
+
+
+                                String pict = null;
+                                for(int j = 0 ; j<response2.body ().size ();j++) {
+
+                                    if (respondOne.get ( finalI ).getProductName ().equals ( response2.body ().get ( j ).getProductName ().toString () )) {
+                                        pict = response2.body ().get ( j ).getProductPic ().toString ();
+                                          respondfiltred.get ( finalI ).setProductImage ( pict );
+                                    }
+
+                                }
+
+
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<List<MarketAll>> call, Throwable t) {
+
+                            }
+
+                        } );
+
+                        onSaleAdapter = new OnSaleAdapter ( respondfiltred,getApplicationContext () );
+
+                        listView.setAdapter ( onSaleAdapter );
+
+
+
                     }
                 }
 
-                onSaleAdapter = new OnSaleAdapter ( respondfiltred,getApplicationContext () );
 
-                listView.setAdapter ( onSaleAdapter );
             }
 
             @Override
@@ -81,8 +116,6 @@ public class OnSaleItemActivity extends AppCompatActivity {
 
         } );
     }
-
-
 
 
 

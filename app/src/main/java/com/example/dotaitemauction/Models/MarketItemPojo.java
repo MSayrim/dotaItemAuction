@@ -15,7 +15,17 @@ public class MarketItemPojo{
 	private String count;
 	private String date;
 	private String command;
+	private String productImage;
 
+
+
+	public String getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(String productImage) {
+		this.productImage = productImage;
+	}
 
 	public String getCommand() {
 		return command;
