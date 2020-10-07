@@ -3,9 +3,7 @@ package com.example.dotaitemauction.Activitys;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.dotaitemauction.Models.LoginPojo;
 import com.example.dotaitemauction.Models.ResultPojo;
 import com.example.dotaitemauction.R;
 import com.example.dotaitemauction.WebApi.ManagerAll;
@@ -35,7 +32,6 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_settings );
-
         mailChange = (Button) findViewById ( R.id.changeMail );
         passChange = (Button) findViewById ( R.id.changePassword );
         nickChange = (Button) findViewById ( R.id.changeNick );
@@ -43,29 +39,25 @@ public class SettingsActivity extends AppCompatActivity {
 
         final AlertDialog dialogBuilder1 = new AlertDialog.Builder(SettingsActivity.this).create();
         final LayoutInflater inflater = this.getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.mail_dialog, null);
+        final View dialogView = inflater.inflate(R.layout.dialog_mail, null);
 
         final AlertDialog dialogBuilder2 = new AlertDialog.Builder(SettingsActivity.this).create();
         final LayoutInflater inflater2 = this.getLayoutInflater();
-        final View dialogView2 = inflater2.inflate(R.layout.nick_dialog, null);
+        final View dialogView2 = inflater2.inflate(R.layout.dialog_nick, null);
 
         final AlertDialog dialogBuilder3 = new AlertDialog.Builder(SettingsActivity.this).create();
         final LayoutInflater inflater3 = this.getLayoutInflater();
-        final View dialogView3 = inflater3.inflate(R.layout.password_dialog, null);
+        final View dialogView3 = inflater3.inflate(R.layout.dialog_password, null);
 
         final AlertDialog dialogBuilder4 = new AlertDialog.Builder(SettingsActivity.this).create();
         final LayoutInflater inflater4 = this.getLayoutInflater();
-        final View dialogView4 = inflater.inflate(R.layout.mail_dialog, null);
+        final View dialogView4 = inflater.inflate(R.layout.dialog_mail, null);
 
         mailChange.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View view) {
-
-
                 final EditText editText1 = (EditText) dialogView.findViewById(R.id.changeMailText);
-
                 final EditText editText2 = (EditText) dialogView.findViewById(R.id.changeMailTextAgain);
-
                 final EditText editText3 = (EditText) dialogView.findViewById(R.id.changeMailPassword);
                 Button button1 = (Button) dialogView.findViewById(R.id.changeMailButton);
                 Button button2 = (Button) dialogView.findViewById(R.id.changeMailButtonDissmiss);
@@ -80,7 +72,6 @@ public class SettingsActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         // DO SOMETHINGS
-
                         if(editText1.getText ().toString ().equals ( editText2.getText ().toString () ) || editText3.getText ().toString () != null || editText1.getText ().toString () != null) {
                             mailchanger ( currentUserId, editText3.getText ().toString (), editText1.getText ().toString () );
                             dialogBuilder1.dismiss ();
@@ -98,16 +89,11 @@ public class SettingsActivity extends AppCompatActivity {
         passChange.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View view) {
-
-
                 final EditText editText1 = (EditText) dialogView3.findViewById(R.id.changePasswordText);
-
                 final EditText editText2 = (EditText) dialogView3.findViewById(R.id.changePasswordTextAgain);
-
                 final EditText editText3 = (EditText) dialogView3.findViewById(R.id.changePassword);
                 Button button1 = (Button) dialogView3.findViewById(R.id.changePasswordButton);
                 Button button2 = (Button) dialogView3.findViewById(R.id.changePasswordButtonDismiss);
-
                 button2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -124,7 +110,6 @@ public class SettingsActivity extends AppCompatActivity {
                         }
                     }
                 });
-
                 dialogBuilder3.setView(dialogView3);
                 dialogBuilder3.show();
 
@@ -133,11 +118,8 @@ public class SettingsActivity extends AppCompatActivity {
         nickChange.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View view) {
-
                 final EditText editText1 = (EditText) dialogView2.findViewById(R.id.changeNickText);
-
                 final EditText editText2 = (EditText) dialogView2.findViewById(R.id.changeNickTextAgain);
-
                 final EditText editText3 = (EditText) dialogView2.findViewById(R.id.changeNickPassword);
                 Button button1 = (Button) dialogView2.findViewById(R.id.changeNickButton);
                 Button button2 = (Button) dialogView2.findViewById(R.id.changeNickButtonDismiss);
@@ -151,15 +133,12 @@ public class SettingsActivity extends AppCompatActivity {
                 button1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        // DO SOMETHINGS
-
                         if(editText1.getText ().toString ().equals ( editText2.getText ().toString () ) || editText3.getText ().toString () != null || editText1.getText ().toString () != null) {
                             nickChanger ( currentUserId, editText3.getText ().toString (), editText1.getText ().toString () );
                             dialogBuilder2.dismiss ();
                         }
                     }
                 });
-
                 dialogBuilder2.setView(dialogView2);
                 dialogBuilder2.show();
 
@@ -168,7 +147,6 @@ public class SettingsActivity extends AppCompatActivity {
         langChange.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View view) {
-
             }
         } );
     }
@@ -179,9 +157,6 @@ public class SettingsActivity extends AppCompatActivity {
         request.enqueue ( new Callback<ResultPojo> () {
             @Override
             public void onResponse(Call<ResultPojo> call, Response<ResultPojo> response) {
-
-
-
             }
             @Override
             public void onFailure(Call<ResultPojo> call, Throwable t) {
@@ -195,14 +170,10 @@ public class SettingsActivity extends AppCompatActivity {
         request.enqueue ( new Callback<ResultPojo> () {
             @Override
             public void onResponse(Call<ResultPojo> call, Response<ResultPojo> response) {
-
                 String result = response.body ().getResult ().toString ();
-
                 Toast toast = Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG);
                 toast.setGravity( Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
                 toast.show();
-
-
             }
             @Override
             public void onFailure(Call<ResultPojo> call, Throwable t) {
@@ -216,10 +187,7 @@ public class SettingsActivity extends AppCompatActivity {
         request.enqueue ( new Callback<ResultPojo> () {
             @Override
             public void onResponse(Call<ResultPojo> call, Response<ResultPojo> response) {
-
-
                 String result = response.body ().toString ();
-
                 Toast toast = Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG);
                 toast.setGravity( Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
                 toast.show();

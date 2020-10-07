@@ -24,16 +24,52 @@
     <string name="action_deliver">My Item Deliveries</string>
     <string name="action_account_upgrades">Upgrade Account</string>
     <string name="action_account_payment_statu">Upgrade Statu</string>
-
     <string name="sell_item_name">Item Name</string>
     <string name="sell_item_style">Sell Style</string>
     <string name="sell_item_price">Price of Item</string>
-
     <string name="profil_name">Profil Name</string>
     <string name="profil_point">Profil Point</string>
     <string name="profil_steam_id">Steam ID</string>
     <string name="profil_premium_statu">Premium Statu</string>
     <string name="profil_list_size">Your item list count</string>
+    <string name="seller_rate">RATE</string>
+    <string name="payment_metod">Payment Method</string>
+    <string name="sell_price">Price</string>
+    <string name="item_count"> Item Count</string>
+    <string name="seller_nick">Seller Nick</string>
+    <string name="seller_steamid">Seller SteamID</string>
+    <string name="buyer_steamid">Buyer SteamID</string>
+    <string name="seller_price">Item Price</string>
+    <string name="seller_method">Payment Method</string>
+    <string name="seller_item_name">Item Name</string>
+    <string name="current_sellers">Current Sellers</string>
+    <string name="current_item_count">Current item count :</string>
+    <string name="current_item_price">Current item price :</string>
+
+//hints
+    <string name="password_hint_one">enter new password</string>
+    <string name="password_hint_two">enter new password again</string>
+    <string name="password_hint_main">enter current password</string>
+    <string name="nick_hint_one">enter new nickname</string>
+    <string name="nick_hint_two">enter new nickname again</string>
+    <string name="mail_hint_one">enter new mail adress</string>
+    <string name="mail_hint_two">enter new mail again</string>
+
+
+    //Buttons
+
+    <string name="submit_button">submit</string>
+    <string name="cancel_button">cancel</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="rate_now">RATE NOW</string>
+    <string name="change_mail">change mail</string>
+    <string name="change_password">change password</string>
+    <string name="change_nickname">change nickname</string>
+    <string name="change_language">change language</string>
+    <string name="sell_item">SELL ITEM</string>
+
+    //spinners
     <string-array name="premium_month">
         <item>1 Month</item>
         <item>3 Month %5 OFF</item>
@@ -49,31 +85,4 @@
         <item>100 item %25 OFF</item>
     </string-array>
 
-    <string name="seller_rate">RATE</string>
-    <string name="payment_metod">Payment Method</string>
-    <string name="sell_price">Price</string>
-    <string name="item_count"> Item Count</string>
-
-    <string name="seller_nick">Seller Nick</string>
-
-    <string name="seller_steamid">Seller SteamID</string>
-
-    <string name="seller_price">Item Price</string>
-    <string name="seller_method">Payment Method</string>
-    <string name="seller_item_name">Item Name</string>
-
-
-    <string name="password_hint_one">enter new password</string>
-    <string name="password_hint_two">enter new password again</string>
-    <string name="password_hint_main">enter current password</string>
-
-    <string name="nick_hint_one">enter new nickname</string>
-    <string name="nick_hint_two">enter new nickname again</string>
-
-    <string name="mail_hint_one">enter new mail adress</string>
-    <string name="mail_hint_two">enter new mail again</string>
-
-
-    <string name="submit_button">submit</string>
-    <string name="cancel_button">cancel</string>
 </resources>

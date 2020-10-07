@@ -43,7 +43,6 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
     List<MarketItemCountPojo> respondTwo;
     String id;
     Intent sellIntent;
-
     ProgressBar loadingProgressBar;
 
     @Override
@@ -53,10 +52,7 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
         marketActivity = this;
         Toolbar toolbar = findViewById ( R.id.toolbar );
         FloatingActionButton fab = findViewById ( R.id.fab);
-
         loadingProgressBar = findViewById ( R.id.loading );
-
-
         sellIntent = new Intent (getApplicationContext (), SellItemActivity.class );
         Intent idIntent=getIntent ();
         id = idIntent.getStringExtra ( "id" );
@@ -64,8 +60,6 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
         fab.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View view) {
-
-
                 startActivity ( sellIntent );
             }
         } );
@@ -77,8 +71,6 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
 
   public void onResume() {
         super.onResume ();
-
-
         loader ();
     }
 
@@ -97,8 +89,6 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
                         respondTwo = response.body ();
                         marketListAdapter = new MarketListAdapter ( respondOne,getApplicationContext (),respondTwo );
                         listView.setAdapter ( marketListAdapter );
-
-
                     }
                     @Override
                     public void onFailure(Call<List<MarketItemCountPojo>> call, Throwable t) {

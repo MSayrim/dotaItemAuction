@@ -70,17 +70,12 @@ public class MarketListDetailAdapter  extends BaseAdapter {
             TextView price = convertView.findViewById ( R.id.sellPriceView );
             rate = convertView.findViewById ( R.id.ratingBar );
 
-
                 MarketItemPojo item = items.get ( position );
                 rate(item.getSellerId ());
-
-
                 NameView.setText ( item.getProductName () + " " );
                 paymentMethod.setText ( item.getMethod () );
                 price.setText ( item.getPrice () );
-
                 float userRate = Float.parseFloat(item.getRate () );
-
                 rate.setRating (userRate );
 
                 View.OnClickListener yourClickListener = new View.OnClickListener () {

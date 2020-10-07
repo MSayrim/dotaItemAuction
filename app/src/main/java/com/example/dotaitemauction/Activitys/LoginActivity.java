@@ -30,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     Button loginButton;
     boolean result;
     LoginPojo currentUser;
+    public boolean isResult;
     public static String currentUserId;
     ProgressBar loadingProgressBar;
     @Override
@@ -48,9 +49,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(isDataValid () == true) {
-                    login ( userName.getText ().toString (), password.getText ().toString () );
 
-                    loadingProgressBar.setVisibility ( View.VISIBLE );
+                     login ( userName.getText ().toString (), password.getText ().toString () );
 
                 }
                 else {
@@ -64,31 +64,26 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
     public boolean login (String userName , String password)
     {
+
         final Call<LoginPojo> request = ManagerAll.getInstance ().login ( userName,password );
         request.enqueue ( new Callback<LoginPojo> () {
             @Override
             public void onResponse(Call<LoginPojo> call, Response<LoginPojo> response) {
-
-                 boolean result = response.isSuccessful ();
-                 currentUser = response.body ();
-
-                if(response.isSuccessful ())
+                isResult = response.isSuccessful ();
+                currentUser = response.body ();
+                if(response.isSuccessful())
                 {
 
 
                     if(response.body ().getId () !=null && response.body ().getUserName () !=null){
+                        loadingProgressBar.setVisibility ( View.VISIBLE );
 
                         Toast.makeText ( getApplicationContext (),"giriş başarılı",Toast.LENGTH_LONG ).show ();
-
-
-
                         new Handler (  ).postDelayed ( new Runnable () {
                             @Override
                             public void run() {
-
                                 Intent intent = new Intent ( getApplicationContext (),MarketActivity.class );
                                 intent.putExtra ( "id" , currentUser.getId ().toString () );
                                 currentUserId = currentUser.getId ().toString ();
@@ -98,6 +93,7 @@ public class LoginActivity extends AppCompatActivity {
                                 finish ();
                             }
                         },3400 );
+
 
                     }
                     else {
@@ -113,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onFailure(Call<LoginPojo> call, Throwable t) {
             }
         } );
-        return result;
+        return isResult;
     }
 
 
@@ -128,29 +124,23 @@ public class LoginActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
 
                 if(isDataValid () ==true || isEmpty (userName.getText ().toString (), password.getText ().toString ())==true) {
-
                     loginButton.setEnabled (true  );
                 }else {
-
                     loginButton.setEnabled (false  );
                 }
 
             }
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 if(isDataValid () ==true || isEmpty (userName.getText ().toString (), password.getText ().toString ())==true) {
-
                     loginButton.setEnabled (true  );
                 }else {
-
                     loginButton.setEnabled (false  );
                 }
             }
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(isDataValid () ==true || isEmpty (userName.getText ().toString (), password.getText ().toString ())==true) {
-
                     loginButton.setEnabled (true  );
                 }else {
-
                     loginButton.setEnabled (false  );
                 }
             }
@@ -160,29 +150,23 @@ public class LoginActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
 
                 if(isDataValid () ==true || isEmpty (userName.getText ().toString (), password.getText ().toString ())==true) {
-
                     loginButton.setEnabled (true  );
                 }else {
-
                     loginButton.setEnabled (false  );
                 }
 
             }
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 if(isDataValid () ==true || isEmpty (userName.getText ().toString (), password.getText ().toString ())==true) {
-
                     loginButton.setEnabled (true  );
                 }else {
-
                     loginButton.setEnabled (false  );
                 }
             }
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(isDataValid () ==true || isEmpty (userName.getText ().toString (), password.getText ().toString ())==true) {
-
                     loginButton.setEnabled (true  );
                 }else {
-
                     loginButton.setEnabled (false  );
                 }
             }

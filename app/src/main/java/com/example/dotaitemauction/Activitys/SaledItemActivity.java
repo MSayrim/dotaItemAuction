@@ -30,12 +30,8 @@ public class SaledItemActivity extends AppCompatActivity {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_saled_item );
         listView = (ListView) findViewById ( R.id.saledItemListView );
-
         loader (currentUserId);
     }
-
-
-
 
     public void loader(String sellerId)
     {
@@ -43,20 +39,14 @@ public class SaledItemActivity extends AppCompatActivity {
         buyItemModelCall.enqueue ( new Callback<List<BuyedItemPojo>> () {
             @Override
             public void onResponse(final Call<List<BuyedItemPojo>> call2, final Response<List<BuyedItemPojo>> response) {
-
                 respondOne = response.body ();
-
                 saledItemsAdapter = new SaledItemsAdapter ( respondOne,getApplicationContext (),"0" );
                 saledItemsAdapter.notifyDataSetChanged ();
                 listView.setAdapter ( saledItemsAdapter );
-
             }
-
             @Override
             public void onFailure(Call<List<BuyedItemPojo>> call, Throwable t) {
-
             }
-
         } );
     }
 }

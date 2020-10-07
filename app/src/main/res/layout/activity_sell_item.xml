@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".Activitys.SellItemActivity">
 
     <LinearLayout
@@ -22,6 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/sell_item_name"
+            android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="24sp" />
 
@@ -37,9 +39,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
+            android:text="@string/sell_item_style"
+            android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="24sp"
-            android:text="@string/sell_item_style" />
+            android:textSize="24sp" />
 
         <Spinner
             android:id="@+id/sellMethodSpinner"
@@ -51,8 +54,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/item_count"
+            android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="24sp"/>
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/countItemText"
@@ -61,13 +65,14 @@
             android:ems="10"
             android:hint='example "1,3,5,6,7,8"'
             android:inputType="number"
-            android:textSize="36sp"/>
+            android:textSize="36sp" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/sell_item_price"
+            android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="24sp" />
 
@@ -85,7 +90,7 @@
             android:id="@+id/sellButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SELL ITEM" />
+            android:text="@string/sell_item" />
 
     </LinearLayout>
 

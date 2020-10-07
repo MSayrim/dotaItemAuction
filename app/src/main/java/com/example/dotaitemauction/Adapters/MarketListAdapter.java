@@ -9,8 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -49,28 +47,17 @@ public class MarketListAdapter extends BaseAdapter {
     public int getCount() {
         return items.size ();
     }
-
     @Override
     public Object getItem(int i) {
         return items.get ( i );
     }
-
     @Override
     public long getItemId(int i) {
         return 0;
     }
-
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
-
-
-
-
-
-        convertView = LayoutInflater.from ( context ).inflate ( R.layout.market_content,parent,false );
-
-
+        convertView = LayoutInflater.from ( context ).inflate ( R.layout.content_market,parent,false );
         TextView NameView = convertView.findViewById(R.id.itemName );
         TextView StockView = convertView.findViewById(R.id.itemStock);
         MarketAll item = items.get(position);
@@ -80,22 +67,18 @@ public class MarketListAdapter extends BaseAdapter {
         View.OnClickListener yourClickListener = new View.OnClickListener () {
             public void onClick(View v) {
                 //put your desired action here
+
+
                 v.callOnClick();
             }
         };
-
-
-
-
 //.transform ( new RoundedTransformation (15,5) )
-
         final View finalConvertView = convertView;
         Picasso.with(context).load(pic).into( new Target (){
             @Override
             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
                 finalConvertView.setBackground(new BitmapDrawable (context.getResources(), bitmap));
             }
-
             @Override
             public void onBitmapFailed(final Drawable errorDrawable) {
                 Log.d("TAG", "FAILED");

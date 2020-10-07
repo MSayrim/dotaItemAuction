@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".Activitys.SettingsActivity">
 
     <LinearLayout
@@ -27,7 +28,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_weight="0.5"
                 android:singleLine="false"
-                android:text="change password" />
+                android:text="@string/change_password" />
 
             <Button
                 android:id="@+id/changeMail"
@@ -38,7 +39,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
                 android:layout_weight="0.5"
-                android:text="change mail" />
+                android:text="@string/change_mail" />
         </LinearLayout>
 
         <LinearLayout
@@ -57,7 +58,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
                 android:layout_weight="0.5"
-                android:text="change nick" />
+                android:text="@string/change_nickname" />
 
             <Button
                 android:id="@+id/changeLanguage"
@@ -68,7 +69,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
                 android:layout_weight="0.5"
-                android:text="change language" />
+                android:text="@string/change_language" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

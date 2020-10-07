@@ -6,11 +6,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.dotaitemauction.Adapters.MarketListDetailAdapter;
 import com.example.dotaitemauction.Adapters.OnSaleAdapter;
+import com.example.dotaitemauction.Adapters.TempAdapter;
 import com.example.dotaitemauction.Models.MarketAll;
 import com.example.dotaitemauction.Models.MarketItemPojo;
 import com.example.dotaitemauction.R;
@@ -25,7 +28,7 @@ import retrofit2.Response;
 
 import static com.example.dotaitemauction.Activitys.LoginActivity.currentUserId;
 
-public class OnSaleItemActivity extends AppCompatActivity {
+public class OnSaleItemActivity extends AppCompatActivity  {
 
     List<MarketItemPojo> respondOne;
 
@@ -37,15 +40,17 @@ public class OnSaleItemActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
-        setContentView ( R.layout.activity_on_sale_item );
-        listView = (ListView) findViewById ( R.id.onSaleListView );
-        loader ();
+        setContentView ( R.layout.temp_list );
+        listView = (ListView) findViewById ( R.id.tempList );
+
 
 
     }
 
-
-
+    public void onResume() {
+        super.onResume ();
+        loader ();
+    }
 
     public void loader()
     {
@@ -97,8 +102,10 @@ public class OnSaleItemActivity extends AppCompatActivity {
 
                         } );
 
-                        onSaleAdapter = new OnSaleAdapter ( respondfiltred,getApplicationContext () );
-
+                        onSaleAdapter = new OnSaleAdapter ( respondfiltred,OnSaleItemActivity.this );
+                        listView.invalidateViews ();
+                        listView.refreshDrawableState();
+                        onSaleAdapter.notifyDataSetChanged ();
                         listView.setAdapter ( onSaleAdapter );
 
 
@@ -116,10 +123,6 @@ public class OnSaleItemActivity extends AppCompatActivity {
 
         } );
     }
-
-
-
-
 
 
 }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".Activitys.RegisterActivity">
 
     <FrameLayout
@@ -18,28 +19,6 @@
             android:paddingTop="40dp">
 
             <EditText
-                android:id="@+id/registerMail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/register_mail"
-                android:inputType="textEmailAddress"
-                android:paddingTop="30dp"
-                android:textAlignment="center"
-                android:textSize="24sp" />
-
-            <EditText
-                android:id="@+id/registerSteamId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/steam_id"
-                android:inputType="number"
-                android:paddingTop="30dp"
-                android:textAlignment="center"
-                android:textSize="24sp" />
-
-            <EditText
                 android:id="@+id/registerNick"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -48,6 +27,7 @@
                 android:inputType="textPersonName"
                 android:paddingTop="30dp"
                 android:textAlignment="center"
+                android:textColor="@color/textOnP"
                 android:textSize="24sp" />
 
             <EditText
@@ -59,6 +39,7 @@
                 android:inputType="textPassword"
                 android:paddingTop="30dp"
                 android:textAlignment="center"
+                android:textColor="@color/textOnP"
                 android:textSize="24sp" />
 
             <EditText
@@ -70,6 +51,31 @@
                 android:inputType="textPassword"
                 android:paddingTop="30dp"
                 android:textAlignment="center"
+                android:textColor="@color/textOnP"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/registerMail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/register_mail"
+                android:inputType="textEmailAddress"
+                android:paddingTop="30dp"
+                android:textAlignment="center"
+                android:textColor="@color/textOnP"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/registerSteamId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/steam_id"
+                android:inputType="number|text"
+                android:paddingTop="30dp"
+                android:textAlignment="center"
+                android:textColor="@color/textOnP"
                 android:textSize="24sp" />
 
             <Button

@@ -40,17 +40,10 @@ public class MarketDetailActivity extends AppCompatActivity implements AdapterVi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_market_detail );
-
-        listView = (ListView) findViewById ( R.id.marketListDetailList );
-        respondOne = new ArrayList<> (  );
-
-        loader ();
-
-
-
+        listView = (ListView) findViewById(R.id.marketListDetailList);
+        respondOne = new ArrayList<>();
+        loader();
         listView.setOnItemClickListener (MarketDetailActivity.this);
-
-
 
     }
     public void loader()
@@ -60,28 +53,22 @@ public class MarketDetailActivity extends AppCompatActivity implements AdapterVi
             @Override
             public void onResponse(final Call<List<MarketItemPojo>> call2, final Response<List<MarketItemPojo>> response) {
                 respondOne = response.body ();
-
                 Intent intent1 = getIntent ();
-                String focusItem = intent1.getStringExtra ( "curent item" );
-
-                respondfiltred = new ArrayList<> (  );
-                for(int i = 0 ; i<respondOne.size ();i++)
+                String focusItem = intent1.getStringExtra( "curent item" );
+                respondfiltred = new ArrayList<>();
+                for(int i = 0 ; i<respondOne.size();i++)
                 {
-                    if(respondOne.get (i).getProductName ().equals ( focusItem ))
+                    if(respondOne.get(i).getProductName().equals(focusItem))
                     {
-                        String date = respondOne.get ( i ).getDate ();
-                        respondfiltred.add ( respondOne.get ( i ) );
+                        String date = respondOne.get(i).getDate();
+                        respondfiltred.add(respondOne.get(i));
                     }
                 }
-
-                marketListDetailAdapter = new MarketListDetailAdapter ( respondfiltred,getApplicationContext () );
-
+                marketListDetailAdapter = new MarketListDetailAdapter(respondfiltred,getApplicationContext());
                 listView.setAdapter ( marketListDetailAdapter );
             }
-
             @Override
             public void onFailure(Call<List<MarketItemPojo>> call, Throwable t) {
-
             }
 
         } );
@@ -90,18 +77,14 @@ public class MarketDetailActivity extends AppCompatActivity implements AdapterVi
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Intent intent = new Intent(getApplicationContext (),ItemDetailActivity.class );
-
-
-        intent.putExtra ( "sellerId",respondfiltred.get ( i ).getSellerId () );
-        intent.putExtra ( "name",respondfiltred.get ( i ).getProductName () );
-        intent.putExtra ( "method",respondfiltred.get ( i ).getMethod () );
-        intent.putExtra ( "price",respondfiltred.get ( i ).getPrice () );
-        intent.putExtra ( "nick",respondfiltred.get ( i ).getSellerNick () );
-        intent.putExtra ( "steam id",respondfiltred.get ( i ).getSellerSteamId () );
-        intent.putExtra ( "count" , respondfiltred.get ( i ).getCount () );
-        intent.putExtra ( "itemId",respondfiltred.get ( i ).getProductId () );
-
-
+        intent.putExtra("sellerId",respondfiltred.get(i).getSellerId());
+        intent.putExtra("name",respondfiltred.get(i).getProductName());
+        intent.putExtra("method",respondfiltred.get(i).getMethod());
+        intent.putExtra("price",respondfiltred.get(i).getPrice());
+        intent.putExtra("nick",respondfiltred.get(i).getSellerNick());
+        intent.putExtra("steam id",respondfiltred.get(i).getSellerSteamId());
+        intent.putExtra("count" , respondfiltred.get(i).getCount());
+        intent.putExtra("itemId",respondfiltred.get(i).getProductId());
         startActivity(intent);
     }
 

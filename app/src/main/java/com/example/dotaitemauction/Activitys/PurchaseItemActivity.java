@@ -28,13 +28,9 @@ public class PurchaseItemActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_purchase_item );
-
         listView = (ListView) findViewById ( R.id.buyedItemList );
-
         loader ( currentUserId );
     }
-
-
 
     public void loader(String buyerId)
     {
@@ -42,19 +38,13 @@ public class PurchaseItemActivity extends AppCompatActivity {
         buyItemModelCall.enqueue ( new Callback<List<BuyedItemPojo>> () {
             @Override
             public void onResponse(final Call<List<BuyedItemPojo>> call2, final Response<List<BuyedItemPojo>> response) {
-
                 respondOne = response.body ();
-
                 saledItemsAdapter = new SaledItemsAdapter ( respondOne,getApplicationContext (),"5" );
                 listView.setAdapter ( saledItemsAdapter );
-
             }
-
             @Override
             public void onFailure(Call<List<BuyedItemPojo>> call, Throwable t) {
-
             }
-
         } );
     }
 }

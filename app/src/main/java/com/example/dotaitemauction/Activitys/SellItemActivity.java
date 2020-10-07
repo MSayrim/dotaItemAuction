@@ -53,41 +53,27 @@ public class SellItemActivity extends AppCompatActivity {
         priceText = (EditText) findViewById ( R.id.sellPrice );
         Intent intentSellerId = getIntent ();
         sellerId = intentSellerId.getStringExtra ( "id" );
-
         methodNames = new ArrayList<> (  );
         itemNames = new ArrayList<> (  );
         itemIdModels = new ArrayList<ItemIdModel> (  );
         methodNames.add ( "cash only" );
         methodNames.add ( "immortal trade" );
         loader ();
-
-
-
-
-
         button.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View view) {
-
                 String tempName = itemSpinner.getSelectedItem ().toString ();
                 String tempMethod = sellMethodSpinner.getSelectedItem ().toString ();
                 String tempPrice = priceText.getText ().toString ();
                 String tempCount = countItemText.getText ().toString ();
-
                 for (int i = 0 ; i<itemIdModels.size ();i++)
                 {
-
                     if(itemIdModels.get ( i ).getItemName ().equals ( tempName ))
                     {
                         tempItemId = itemIdModels.get ( i ).getItemId ();
                     }
-
                 }
-
                     seller ( tempItemId,currentUserId,tempCount,tempMethod,tempPrice );
-
-
-
             }
         } );
     }
@@ -98,28 +84,20 @@ public class SellItemActivity extends AppCompatActivity {
             @Override
             public void onResponse(final Call<List<MarketAll>> call2, final Response<List<MarketAll>> response) {
                 respondOne = response.body ();
-
-
                 for (int i=0 ; i<respondOne.size ();i++)
                 {
                     if(respondOne.get (  i).getProductName () != null) {
                         String temp = respondOne.get ( i ).getProductName () ;
                         String temp2= respondOne.get ( i ).getProductId ().toString ();
-
                         ItemIdModel item = new ItemIdModel ( temp,temp2 );
                         itemIdModels.add ( item );
-
                         itemNames.add ( temp );
                     }
                 }
-
-
                 spinnerLoader (itemNames,methodNames);
             }
-
             @Override
             public void onFailure(Call<List<MarketAll>> call, Throwable t) {
-
             }
 
         } );
@@ -128,15 +106,12 @@ public class SellItemActivity extends AppCompatActivity {
     public void seller (String itemId , String sellerId, String count , String paymentType , String price)
     {
         final Call<SellPojo> request = ManagerAll.getInstance ().sellItem ( itemId,sellerId,count,paymentType,price );
-
         request.enqueue ( new Callback<SellPojo> () {
             @Override
             public void onResponse(Call<SellPojo> call, Response<SellPojo> response) {
                 Toast.makeText ( getApplicationContext (),response.body ().getSatisKodu () + response.body ().getResult (),Toast.LENGTH_LONG ).show ();
-
                 if(response.body ().getResult ().equals ( "Listeleme basarili" )){
                     Intent goback = new Intent (getApplicationContext (), MarketActivity.class );
-
                     startActivity ( goback );
                     finish ();
                 }
@@ -144,14 +119,9 @@ public class SellItemActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<SellPojo> call, Throwable t) {
-
             }
         } );
     }
-
-
-
-
     public void spinnerLoader(List<String> itemList , List<String> method)
     {
         sellMethodSpinner = (Spinner) findViewById ( R.id.sellMethodSpinner );

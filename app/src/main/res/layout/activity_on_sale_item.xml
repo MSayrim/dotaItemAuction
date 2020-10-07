@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".Activitys.OnSaleItemActivity">
 
     <ListView
         android:id="@+id/onSaleListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:descendantFocusability="beforeDescendants"/>
+        android:background="@drawable/background" />
 </androidx.constraintlayout.widget.ConstraintLayout>

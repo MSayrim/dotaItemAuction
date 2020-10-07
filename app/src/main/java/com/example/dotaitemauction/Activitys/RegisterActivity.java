@@ -30,25 +30,19 @@ public class RegisterActivity extends AppCompatActivity {
     EditText registerPassword;
     EditText registerPasswordAgain;
     Button registerButton;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_register );
-
-        registerMail            = (EditText) findViewById ( R.id.registerMail          );
+        registerMail = (EditText) findViewById(R.id.registerMail);
         registerSteamId         = (EditText) findViewById ( R.id.registerSteamId       );
         registerNick            = (EditText) findViewById ( R.id.registerNick          );
-        registerPassword        = (EditText) findViewById ( R.id.passwordField );
+        registerPassword        = (EditText) findViewById ( R.id.passwordField         );
         registerPasswordAgain   = (EditText) findViewById ( R.id.registerPasswordAgain );
         registerButton          = (Button)   findViewById ( R.id.registerButton        );
-
         registerButton.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View view) {
-
                 if(registerMail!=null&&registerNick!=null&&registerPassword!=null&&registerPasswordAgain!=null&&registerSteamId!=null) {
                     register ( registerMail.getText ().toString (), registerPassword.getText ().toString (), registerNick.getText ().toString (), registerSteamId.getText ().toString () );
                 }
@@ -59,7 +53,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         registerPasswordAgain.addTextChangedListener(new TextWatcher () {
             public void afterTextChanged(Editable s) {
-
                 if(isPasswordSame () ==true && isUserNameValid (registerMail.getText ().toString () )==true && isPasswordValid (registerPassword.getText ().toString ())==true && isNickVaild ( registerNick.getText ().toString () )==true
                 && isSteamId ( registerSteamId.getText ().toString () )==true)
                 {registerButton.setEnabled ( true );}
@@ -80,7 +73,6 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<RegisterPojo> call, Response<RegisterPojo> response) {
                 Toast.makeText ( getApplicationContext (),response.body ().getResult (),Toast.LENGTH_LONG ).show ();
-
                 if(response.body ().getResult ().equals ( "kayit basarili" )){
                 Intent intent = new Intent ( getApplicationContext (),LoginActivity.class );
                 startActivity ( intent );}
@@ -88,7 +80,6 @@ public class RegisterActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<RegisterPojo> call, Throwable t) {
-
             }
         } );
 
@@ -97,7 +88,6 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     public boolean isPasswordSame(){
-
         boolean result = false;
         if(registerPassword.getText ().toString ().equals ( registerPasswordAgain.getText ().toString () ))
         {
@@ -121,11 +111,9 @@ public class RegisterActivity extends AppCompatActivity {
     private boolean isPasswordValid(String password) {
         return password != null && password.trim ().length () > 5;
     }
-
     private boolean isNickVaild(String nick) {
         return nick != null && nick.trim ().length () > 2;
     }
-
     private boolean isSteamId(String steamId) {
         return steamId != null && steamId.trim ().length () > 6;
     }

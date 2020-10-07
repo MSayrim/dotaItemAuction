@@ -1,8 +1,10 @@
 package com.example.dotaitemauction.Adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,17 +14,14 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.dotaitemauction.Models.MarketAll;
 import com.example.dotaitemauction.Models.MarketItemPojo;
 import com.example.dotaitemauction.Models.Response;
-import com.example.dotaitemauction.Models.UserRate;
 import com.example.dotaitemauction.R;
 import com.example.dotaitemauction.WebApi.ManagerAll;
 import com.squareup.picasso.Picasso;
@@ -70,18 +69,15 @@ public class OnSaleAdapter extends BaseAdapter {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
 
-        convertView = LayoutInflater.from ( context ).inflate ( R.layout.on_sale_content, parent, false );
+        convertView = LayoutInflater.from ( context ).inflate ( R.layout.content_on_sale, parent, false );
        // convertView = LayoutInflater.from ( context ).inflate ( R.layout.test_content, parent, false );
 
 
         final MarketItemPojo item = items.get ( position );
         TextView itemName = convertView.findViewById ( R.id.onSaleItemName );
-        final EditText itemCount = convertView.findViewById ( R.id.onSaleItemCount );
-        final EditText itemPrice = convertView.findViewById ( R.id.onSaleItemPrice );
         final TextView itemCurrentCount = convertView.findViewById ( R.id.currentItemCount );
         final TextView itemCurrentPrice = convertView.findViewById ( R.id.currentItemPrice );
-        Button editButton = convertView.findViewById ( R.id.editButton );
-        Button deleteButton = convertView.findViewById ( R.id.deleteButton );
+        Button dialogButton = convertView.findViewById ( R.id.dialogButton );
         final FrameLayout frameLayout = convertView.findViewById ( R.id.frameLay );
         String pic= "https://www.3boyutlucanavar.com/connections/dotaItems/itemPics/"+item.getProductImage () ;
 
@@ -123,45 +119,88 @@ public class OnSaleAdapter extends BaseAdapter {
             }
         };
 
-        editButton.setOnClickListener ( new View.OnClickListener () {
+
+
+        dialogButton.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View view) {
 
-                String value = "2";
-                String value2 = itemCount.getText ().toString ();
+                final AlertDialog dialogBuilder1 = new AlertDialog.Builder( context).create();
+                final LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                final View dialogView = inflater.inflate(R.layout.dialog_on_sale, null);
+                dialogBuilder1.getWindow().setBackgroundDrawable(new ColorDrawable (android.graphics.Color.TRANSPARENT));
 
-                String value3= itemPrice.getText ().toString ();
+                Toast toast = Toast.makeText(context, "Bilgilendirme mesajı", Toast.LENGTH_LONG);
+                toast.show();
 
-                if(!value2.equals ( "" ) ) {
-                    itemCurrentCount.setText ( itemCount.getText ().toString () );
-                }
-                if(!value3.equals ( "" ) ) {
-                    itemCurrentPrice.setText ( itemPrice.getText ().toString () );
-                }
+                final EditText itemPrice = (EditText) dialogView.findViewById(R.id.itemPriceET);
+                final EditText itemCount = (EditText) dialogView.findViewById(R.id.itemCountET);
+                TextView itemName2 = (TextView) dialogView.findViewById ( R.id.selectedItemNameText );
+                Button button1 = (Button) dialogView.findViewById(R.id.selectedItemEditButton);
+                Button button2 = (Button) dialogView.findViewById(R.id.selectedItemDeteleButton);
+                Button button3 = (Button) dialogView.findViewById(R.id.dissmissButton);
 
-                String temp1 = itemCurrentPrice.getText ().toString ();
-                String temp2 = itemCurrentCount.getText ().toString ();
-                String temp3 = item.getSellerId ();
-                String temp4 = item.getProductId () ;
+                itemPrice.setText ( item.getPrice ().toString () );
+                itemCount.setText ( item.getCount ().toString () );
 
-                edit (temp1 ,temp2,value,temp3,temp4);
+                itemName2.setText ( item.getProductName () );
 
-            }
-        } );
+                button1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
-        deleteButton.setOnClickListener ( new View.OnClickListener () {
-            @Override
-            public void onClick(View view) {
+                        String value = "2";
+                        String value2 = itemCount.getText ().toString ();
 
-                String value = "0";
+                        String value3= itemPrice.getText ().toString ();
 
-                String temp1 = itemPrice.getText ().toString ();
-                String temp2 = itemCount.getText ().toString ();
-                String temp3 = item.getSellerId ();
-                String temp4 = item.getProductId () ;
+                        if(!value2.equals ( "" ) ) {
+                            itemCurrentCount.setText ( itemCount.getText ().toString () );
+                        }
+                        if(!value3.equals ( "" ) ) {
+                            itemCurrentPrice.setText ( itemPrice.getText ().toString () );
+                        }
 
-                edit ( temp1,temp2,value,temp3,temp4 );
+                        String temp1 = itemCurrentPrice.getText ().toString ();
+                        String temp2 = itemCurrentCount.getText ().toString ();
+                        String temp3 = item.getSellerId ();
+                        String temp4 = item.getProductId () ;
 
+                        edit (temp1 ,temp2,value,temp3,temp4);
+                        itemPrice.setText ( temp1);
+                        itemCount.setText ( temp2 );
+
+                        dialogBuilder1.dismiss();
+                    }
+                });
+                button2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        // DO SOMETHINGS
+
+                        String value = "0";
+
+                        String temp1 = itemPrice.getText ().toString ();
+                        String temp2 = itemCount.getText ().toString ();
+                        String temp3 = item.getSellerId ();
+                        String temp4 = item.getProductId () ;
+
+                        edit ( temp1,temp2,value,temp3,temp4 );
+                        dialogBuilder1.dismiss ();
+
+                    }
+
+                });
+
+                button3.setOnClickListener ( new View.OnClickListener () {
+                    @Override
+                    public void onClick(View view) {
+                        dialogBuilder1.dismiss ();
+                    }
+                } );
+
+                dialogBuilder1.setView(dialogView);
+                dialogBuilder1.show();
             }
         } );
 

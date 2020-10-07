@@ -32,14 +32,10 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_profile );
-
         profilText = (TextView) findViewById ( R.id.profilNameView );
         steamIdText = (TextView) findViewById ( R.id.steamIdView );
         profilRate = (RatingBar) findViewById ( R.id.profilRate );
         premiumText = (TextView) findViewById ( R.id.premiumStatuView );
-
-
-
         login ( currentUserId );
 
     }
@@ -50,27 +46,17 @@ public class ProfileActivity extends AppCompatActivity {
         request.enqueue ( new Callback<ProfilPojo> () {
             @Override
             public void onResponse(Call<ProfilPojo> call, Response<ProfilPojo> response) {
-
                 profilText.setText ( response.body ().getNick ().toString () );
                 steamIdText.setText ( response.body ().getSteamId ().toString () );
-
-
                 double rate = response.body ().getRate ();
                 profilRate.setRating ( Float.parseFloat ( String.valueOf ( rate ) ) );
-
                 if(response.body ().getPremiumTime ()!=null) {
-
                     premiumText.setText ( response.body ().getPremiumTime ().toString () );
                 }
-
-
             }
             @Override
             public void onFailure(Call<ProfilPojo> call, Throwable t) {
             }
         } );
     }
-
-
-
 }
