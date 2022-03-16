@@ -32,7 +32,6 @@ public class SaledItemsAdapter extends BaseAdapter {
         ArrayList<BuyedItemPojo> arrayList;
         RatingBar ratingBar;
         Button rateButton;
-
         RatePojo respondOne;
 
         public SaledItemsAdapter(List<BuyedItemPojo> items , Context context , String sellerZeroBuyerOne)
@@ -64,8 +63,6 @@ public class SaledItemsAdapter extends BaseAdapter {
 
 
             convertView = LayoutInflater.from ( context ).inflate ( R.layout.content_saled_item, parent, false );
-
-
             TextView itemName = convertView.findViewById ( R.id.saledItemNameView );
             TextView sellerSteamId = convertView.findViewById ( R.id.saledItemSellerSteamIdView );
             TextView buyerSteamId = convertView.findViewById ( R.id.saledItemBuyerSteamIdView );
@@ -74,9 +71,6 @@ public class SaledItemsAdapter extends BaseAdapter {
 
 
             final BuyedItemPojo item = items.get ( position );
-
-
-
             itemName.setText ( item.getItemName () + " " );
             sellerSteamId.setText ( item.getSellerSteamId () );
             buyerSteamId.setText ( item.getBuyerSteamId () );
@@ -85,28 +79,20 @@ public class SaledItemsAdapter extends BaseAdapter {
                 rates ( item.getBuyerId () );
             }else {
                 rates ( item.getSellerId () );}
-
-
             if(item.getItemRated ()>1)
             {
                 rateButton.setEnabled ( false );
             }
-
-
             rateButton.setOnClickListener ( new View.OnClickListener () {
                 @Override
                 public void onClick(View view) {
                     if(item.getItemRated () <1)
                     {
-
-
-
                         String ratedItem = item.getItemId ();
                         String whoRate = item.getBuyerId ();
                         String ratePosition = sellerZeroBuyerOne;
                         String ratedUser = item.getSellerId ();
                         String rate = String.valueOf ( ratingBar.getRating () );
-
                         rate(ratedItem,whoRate,ratePosition,ratedUser,rate);
 
                         item.setItemRated (1);
@@ -115,17 +101,12 @@ public class SaledItemsAdapter extends BaseAdapter {
                 }
             } );
 
-
-
-
-
             View.OnClickListener yourClickListener = new View.OnClickListener () {
                 public void onClick(View v) {
                     //put your desired action here
                     v.callOnClick ();
                 }
             };
-
 
             return convertView;
         }
@@ -137,12 +118,10 @@ public class SaledItemsAdapter extends BaseAdapter {
         marketLoader.enqueue ( new Callback<RatePojo> () {
             @Override
             public void onResponse(final retrofit2.Call<RatePojo> call2, final retrofit2.Response<RatePojo> response) {
-
             }
 
             @Override
             public void onFailure(Call<RatePojo> call, Throwable t) {
-
             }
 
         } );
@@ -153,20 +132,15 @@ public class SaledItemsAdapter extends BaseAdapter {
     {
         final Call<UserRate> buyItemModelCall = ManagerAll.getInstance().userRate (buyerId);
         buyItemModelCall.enqueue ( new Callback<UserRate> (){
-
-
             @Override
             public void onResponse(Call<UserRate> call, retrofit2.Response<UserRate> response) {
 
                 double result = response.body ().getRate ();
                 ratingBar.setRating ( Float.parseFloat ( String.valueOf ( result ) ) );
-
-
             }
 
             @Override
             public void onFailure(Call<UserRate> call, Throwable t) {
-
             }
         } );
 

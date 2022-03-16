@@ -29,7 +29,6 @@ public class TempAdapter extends BaseAdapter implements View.OnClickListener {
         this.arrayList.addAll(items);
     }
 
-
     @Override
     public int getCount() {
         return items.size ();
@@ -50,28 +49,21 @@ public class TempAdapter extends BaseAdapter implements View.OnClickListener {
 
 
         view = LayoutInflater.from ( context ).inflate ( R.layout.temp_list_content,viewGroup,false );
-
         final MarketItemPojo item = items.get ( i );
-
         final TextView itemCurrentCount = view.findViewById ( R.id.tempItem );
-
         itemCurrentCount.setText ( item.getProductName () );
-
         View.OnClickListener yourClickListener = new View.OnClickListener () {
             public void onClick(View v) {
 
                 Toast.makeText ( context,"Hatalı şifre veya Kullanıcı adı2222",Toast.LENGTH_LONG ).show ();
-
                 v.callOnClick();
             }
         };
-
         return view;
     }
 
     @Override
     public void onClick(View view) {
-
         Toast.makeText ( context,"Hatalı şifre veya Kullanıcı adı33333",Toast.LENGTH_LONG ).show ();
     }
 }

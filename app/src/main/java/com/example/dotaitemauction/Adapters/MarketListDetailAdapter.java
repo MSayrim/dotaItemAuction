@@ -30,10 +30,8 @@ public class MarketListDetailAdapter  extends BaseAdapter {
 
         private List<MarketItemPojo> items;
         private Context context;
-        String value;
         ArrayList<MarketItemPojo> arrayList;
         RatingBar rate;
-
         public MarketListDetailAdapter(List<MarketItemPojo> items , Context context )
         {
             this.items = items;
@@ -63,8 +61,6 @@ public class MarketListDetailAdapter  extends BaseAdapter {
 
 
             convertView = LayoutInflater.from ( context ).inflate ( R.layout.detail_list, parent, false );
-
-
             TextView NameView = convertView.findViewById ( R.id.itemNameView );
             TextView paymentMethod = convertView.findViewById ( R.id.paymentMethodView );
             TextView price = convertView.findViewById ( R.id.sellPriceView );

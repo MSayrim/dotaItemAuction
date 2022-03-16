@@ -39,16 +39,13 @@ public class SettingsActivity extends AppCompatActivity {
 
         final AlertDialog dialogBuilder1 = new AlertDialog.Builder(SettingsActivity.this).create();
         final LayoutInflater inflater = this.getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.dialog_mail, null);
-
+        final View dialogMail = inflater.inflate(R.layout.dialog_mail, null);
         final AlertDialog dialogBuilder2 = new AlertDialog.Builder(SettingsActivity.this).create();
         final LayoutInflater inflater2 = this.getLayoutInflater();
-        final View dialogView2 = inflater2.inflate(R.layout.dialog_nick, null);
-
+        final View dialogNick = inflater2.inflate(R.layout.dialog_nick, null);
         final AlertDialog dialogBuilder3 = new AlertDialog.Builder(SettingsActivity.this).create();
         final LayoutInflater inflater3 = this.getLayoutInflater();
-        final View dialogView3 = inflater3.inflate(R.layout.dialog_password, null);
-
+        final View dialogPassword = inflater3.inflate(R.layout.dialog_password, null);
         final AlertDialog dialogBuilder4 = new AlertDialog.Builder(SettingsActivity.this).create();
         final LayoutInflater inflater4 = this.getLayoutInflater();
         final View dialogView4 = inflater.inflate(R.layout.dialog_mail, null);
@@ -56,11 +53,11 @@ public class SettingsActivity extends AppCompatActivity {
         mailChange.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View view) {
-                final EditText editText1 = (EditText) dialogView.findViewById(R.id.changeMailText);
-                final EditText editText2 = (EditText) dialogView.findViewById(R.id.changeMailTextAgain);
-                final EditText editText3 = (EditText) dialogView.findViewById(R.id.changeMailPassword);
-                Button button1 = (Button) dialogView.findViewById(R.id.changeMailButton);
-                Button button2 = (Button) dialogView.findViewById(R.id.changeMailButtonDissmiss);
+                final EditText editText1 = (EditText) dialogMail.findViewById(R.id.changeMailText);
+                final EditText editText2 = (EditText) dialogMail.findViewById(R.id.changeMailTextAgain);
+                final EditText editText3 = (EditText) dialogMail.findViewById(R.id.changeMailPassword);
+                Button button1 = (Button) dialogMail.findViewById(R.id.changeMailButton);
+                Button button2 = (Button) dialogMail.findViewById(R.id.changeMailButtonDissmiss);
 
                 button2.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -79,7 +76,7 @@ public class SettingsActivity extends AppCompatActivity {
                     }
                 });
 
-                dialogBuilder1.setView(dialogView);
+                dialogBuilder1.setView(dialogMail);
                 dialogBuilder1.show();
 
             }
@@ -89,11 +86,11 @@ public class SettingsActivity extends AppCompatActivity {
         passChange.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View view) {
-                final EditText editText1 = (EditText) dialogView3.findViewById(R.id.changePasswordText);
-                final EditText editText2 = (EditText) dialogView3.findViewById(R.id.changePasswordTextAgain);
-                final EditText editText3 = (EditText) dialogView3.findViewById(R.id.changePassword);
-                Button button1 = (Button) dialogView3.findViewById(R.id.changePasswordButton);
-                Button button2 = (Button) dialogView3.findViewById(R.id.changePasswordButtonDismiss);
+                final EditText editText1 = (EditText) dialogPassword.findViewById(R.id.changePasswordText);
+                final EditText editText2 = (EditText) dialogPassword.findViewById(R.id.changePasswordTextAgain);
+                final EditText editText3 = (EditText) dialogPassword.findViewById(R.id.changePassword);
+                Button button1 = (Button) dialogPassword.findViewById(R.id.changePasswordButton);
+                Button button2 = (Button) dialogPassword.findViewById(R.id.changePasswordButtonDismiss);
                 button2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -110,7 +107,7 @@ public class SettingsActivity extends AppCompatActivity {
                         }
                     }
                 });
-                dialogBuilder3.setView(dialogView3);
+                dialogBuilder3.setView(dialogPassword);
                 dialogBuilder3.show();
 
             }
@@ -118,12 +115,11 @@ public class SettingsActivity extends AppCompatActivity {
         nickChange.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View view) {
-                final EditText editText1 = (EditText) dialogView2.findViewById(R.id.changeNickText);
-                final EditText editText2 = (EditText) dialogView2.findViewById(R.id.changeNickTextAgain);
-                final EditText editText3 = (EditText) dialogView2.findViewById(R.id.changeNickPassword);
-                Button button1 = (Button) dialogView2.findViewById(R.id.changeNickButton);
-                Button button2 = (Button) dialogView2.findViewById(R.id.changeNickButtonDismiss);
-
+                final EditText editText1 = (EditText) dialogNick.findViewById(R.id.changeNickText);
+                final EditText editText2 = (EditText) dialogNick.findViewById(R.id.changeNickTextAgain);
+                final EditText editText3 = (EditText) dialogNick.findViewById(R.id.changeNickPassword);
+                Button button1 = (Button) dialogNick.findViewById(R.id.changeNickButton);
+                Button button2 = (Button) dialogNick.findViewById(R.id.changeNickButtonDismiss);
                 button2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -139,7 +135,7 @@ public class SettingsActivity extends AppCompatActivity {
                         }
                     }
                 });
-                dialogBuilder2.setView(dialogView2);
+                dialogBuilder2.setView(dialogNick);
                 dialogBuilder2.show();
 
             }

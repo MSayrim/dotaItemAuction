@@ -49,16 +49,10 @@ public class UpgradeAccountActivity extends AppCompatActivity {
                 Double result1 = selectedItemList ()*selectedMonth ();
                 DecimalFormat df = new DecimalFormat("#.##");
                 String result =df.format ( result1 );
-
                 predate.setText ( calendar.getTime().toString () );
-
                 price.setText ( result );
             }
         } );
-
-
-
-
     }
 
 

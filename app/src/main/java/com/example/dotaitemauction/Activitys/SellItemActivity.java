@@ -99,7 +99,6 @@ public class SellItemActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<MarketAll>> call, Throwable t) {
             }
-
         } );
     }
 
@@ -116,7 +115,6 @@ public class SellItemActivity extends AppCompatActivity {
                     finish ();
                 }
             }
-
             @Override
             public void onFailure(Call<SellPojo> call, Throwable t) {
             }
@@ -132,7 +130,5 @@ public class SellItemActivity extends AppCompatActivity {
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         itemSpinner.setAdapter ( adapter );
         sellMethodSpinner.setAdapter ( adapter2 );
-
-
     };
 }

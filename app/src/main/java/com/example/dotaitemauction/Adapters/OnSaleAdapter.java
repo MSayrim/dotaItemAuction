@@ -34,13 +34,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 
 public class OnSaleAdapter extends BaseAdapter {
-
-
     List<Response> respondOne;
     private List<MarketItemPojo> items;
     private Context context;
     ArrayList<MarketItemPojo> arrayList;
-
     public OnSaleAdapter(List<MarketItemPojo> items , Context context )
     {
         this.items = items;
@@ -71,8 +68,6 @@ public class OnSaleAdapter extends BaseAdapter {
 
         convertView = LayoutInflater.from ( context ).inflate ( R.layout.content_on_sale, parent, false );
        // convertView = LayoutInflater.from ( context ).inflate ( R.layout.test_content, parent, false );
-
-
         final MarketItemPojo item = items.get ( position );
         TextView itemName = convertView.findViewById ( R.id.onSaleItemName );
         final TextView itemCurrentCount = convertView.findViewById ( R.id.currentItemCount );
@@ -80,8 +75,6 @@ public class OnSaleAdapter extends BaseAdapter {
         Button dialogButton = convertView.findViewById ( R.id.dialogButton );
         final FrameLayout frameLayout = convertView.findViewById ( R.id.frameLay );
         String pic= "https://www.3boyutlucanavar.com/connections/dotaItems/itemPics/"+item.getProductImage () ;
-
-
 
         Picasso.with(context).load(pic).into( new Target (){
             @Override

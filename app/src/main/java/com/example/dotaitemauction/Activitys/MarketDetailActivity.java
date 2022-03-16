@@ -31,7 +31,6 @@ import static com.example.dotaitemauction.Activitys.LoginActivity.currentUserId;
 public class MarketDetailActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     ListView listView;
-
     MarketListDetailAdapter marketListDetailAdapter;
     List<MarketItemPojo> respondOne;
     List<MarketItemPojo> respondfiltred;

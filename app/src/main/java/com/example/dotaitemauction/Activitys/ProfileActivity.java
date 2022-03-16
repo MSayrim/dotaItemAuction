@@ -37,7 +37,6 @@ public class ProfileActivity extends AppCompatActivity {
         profilRate = (RatingBar) findViewById ( R.id.profilRate );
         premiumText = (TextView) findViewById ( R.id.premiumStatuView );
         login ( currentUserId );
-
     }
 
     public void login (String userId)

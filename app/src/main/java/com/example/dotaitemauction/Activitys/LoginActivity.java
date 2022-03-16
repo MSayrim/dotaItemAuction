@@ -37,13 +37,11 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_login );
-
         userName = (EditText) findViewById ( R.id.username );
         password = (EditText) findViewById ( R.id.passwordField );
         loginButton = (Button) findViewById ( R.id.login );
         loadingProgressBar = findViewById ( R.id.loading );
         buttonActivate ();
-
         loginButton.setOnClickListener ( new View.OnClickListener () {
             @Override
             public void onClick(View view) {
@@ -56,17 +54,12 @@ public class LoginActivity extends AppCompatActivity {
                 else {
                     register ();
                 }
-
             }
         } );
-
-
-
     }
 
     public boolean login (String userName , String password)
     {
-
         final Call<LoginPojo> request = ManagerAll.getInstance ().login ( userName,password );
         request.enqueue ( new Callback<LoginPojo> () {
             @Override
@@ -75,8 +68,6 @@ public class LoginActivity extends AppCompatActivity {
                 currentUser = response.body ();
                 if(response.isSuccessful())
                 {
-
-
                     if(response.body ().getId () !=null && response.body ().getUserName () !=null){
                         loadingProgressBar.setVisibility ( View.VISIBLE );
 
@@ -93,17 +84,11 @@ public class LoginActivity extends AppCompatActivity {
                                 finish ();
                             }
                         },3400 );
-
-
                     }
                     else {
-
                         Toast.makeText ( getApplicationContext (),"Hatalı şifre veya Kullanıcı adı",Toast.LENGTH_LONG ).show ();
                     }
-
                 }
-
-
             }
             @Override
             public void onFailure(Call<LoginPojo> call, Throwable t) {
@@ -112,14 +97,12 @@ public class LoginActivity extends AppCompatActivity {
         return isResult;
     }
 
-
     private void register(){
         Intent intent2 = new Intent ( getApplicationContext (),RegisterActivity.class );
         startActivity ( intent2 );
     }
 
     private void buttonActivate(){
-
         userName.addTextChangedListener(new TextWatcher() {
             public void afterTextChanged(Editable s) {
 
@@ -148,7 +131,6 @@ public class LoginActivity extends AppCompatActivity {
 
         password.addTextChangedListener(new TextWatcher() {
             public void afterTextChanged(Editable s) {
-
                 if(isDataValid () ==true || isEmpty (userName.getText ().toString (), password.getText ().toString ())==true) {
                     loginButton.setEnabled (true  );
                 }else {

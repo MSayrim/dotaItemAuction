@@ -11,8 +11,6 @@ import com.example.dotaitemauction.Activitys.UpgradeAccountActivity;
 
 public class IntentAdapter {
 
-
-
     public void profile(Context context)
     {
         Intent profileIntent = new Intent (context, ProfileActivity.class );

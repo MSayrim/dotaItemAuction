@@ -49,8 +49,6 @@ public class RegisterActivity extends AppCompatActivity {
             }
         } );
 
-
-
         registerPasswordAgain.addTextChangedListener(new TextWatcher () {
             public void afterTextChanged(Editable s) {
                 if(isPasswordSame () ==true && isUserNameValid (registerMail.getText ().toString () )==true && isPasswordValid (registerPassword.getText ().toString ())==true && isNickVaild ( registerNick.getText ().toString () )==true
@@ -68,7 +66,6 @@ public class RegisterActivity extends AppCompatActivity {
     public boolean register (String userMail , String userPass, String userNick , String userSteamId)
     {
         final Call<RegisterPojo> request = ManagerAll.getInstance ().register ( userMail,userPass,userNick,userSteamId );
-
         request.enqueue ( new Callback<RegisterPojo> () {
             @Override
             public void onResponse(Call<RegisterPojo> call, Response<RegisterPojo> response) {
@@ -77,22 +74,18 @@ public class RegisterActivity extends AppCompatActivity {
                 Intent intent = new Intent ( getApplicationContext (),LoginActivity.class );
                 startActivity ( intent );}
             }
-
             @Override
             public void onFailure(Call<RegisterPojo> call, Throwable t) {
             }
         } );
-
         return true;
     }
-
 
     public boolean isPasswordSame(){
         boolean result = false;
         if(registerPassword.getText ().toString ().equals ( registerPasswordAgain.getText ().toString () ))
         {
             result = true;
-
         }
         return result;
     }

@@ -105,16 +105,13 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater ().inflate ( R.menu.menu, menu );
-
         MenuItem myActionMenuItem = menu.findItem(R.id.searchItem);
         SearchView searchView = (SearchView)myActionMenuItem.getActionView();
-
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
                 return false;
             }
-
             @Override
             public boolean onQueryTextChange(String s) {
                 if (TextUtils.isEmpty(s)){
@@ -132,10 +129,8 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         Intent idIntent=getIntent ();
         String id = idIntent.getStringExtra ( "id" );
-
 
         switch (item.getItemId ()) {
             case R.id.action_deliver:
@@ -177,12 +172,9 @@ public class MarketActivity extends AppCompatActivity implements OnItemClickList
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Intent idIntent=getIntent ();
         String id = idIntent.getStringExtra ( "id" );
-
         Intent intent = new Intent(getApplicationContext (),MarketDetailActivity.class );
         intent.putExtra ( "curent item",respondOne.get ( i ).getProductName () );
         intent.putExtra ( "id",id );
-
-
         startActivity(intent);
     }
 }

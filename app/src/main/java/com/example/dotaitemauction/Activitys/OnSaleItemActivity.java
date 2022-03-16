@@ -31,7 +31,6 @@ import static com.example.dotaitemauction.Activitys.LoginActivity.currentUserId;
 public class OnSaleItemActivity extends AppCompatActivity  {
 
     List<MarketItemPojo> respondOne;
-
     List<MarketItemPojo> respondfiltred;
     OnSaleAdapter onSaleAdapter;
     ListView listView;
@@ -42,9 +41,6 @@ public class OnSaleItemActivity extends AppCompatActivity  {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.temp_list );
         listView = (ListView) findViewById ( R.id.tempList );
-
-
-
     }
 
     public void onResume() {
@@ -59,8 +55,6 @@ public class OnSaleItemActivity extends AppCompatActivity  {
             @Override
             public void onResponse(final Call<List<MarketItemPojo>> call2, final Response<List<MarketItemPojo>> response) {
                 respondOne = response.body ();
-
-
                 respondfiltred = new ArrayList<> (  );
                 for(int i = 0 ; i<respondOne.size ();i++)
                 {
@@ -68,10 +62,6 @@ public class OnSaleItemActivity extends AppCompatActivity  {
                     {
                         String date = respondOne.get ( i ).getDate ();
                         respondfiltred.add ( respondOne.get ( i ) );
-
-
-
-
                         final retrofit2.Call<List<MarketAll>> marketLoader = ManagerAll.getInstance().marketLoader ();
                         final int finalI = i;
                         marketLoader.enqueue ( new Callback<
@@ -79,50 +69,29 @@ public class OnSaleItemActivity extends AppCompatActivity  {
                             @Override
                             public void onResponse(final retrofit2.Call<List<MarketAll>> call2, final retrofit2.Response<
                                     List<MarketAll>> response2) {
-
-
                                 String pict = null;
                                 for(int j = 0 ; j<response2.body ().size ();j++) {
-
                                     if (respondOne.get ( finalI ).getProductName ().equals ( response2.body ().get ( j ).getProductName ().toString () )) {
                                         pict = response2.body ().get ( j ).getProductPic ().toString ();
                                           respondfiltred.get ( finalI ).setProductImage ( pict );
                                     }
-
                                 }
-
-
-
                             }
-
                             @Override
                             public void onFailure(Call<List<MarketAll>> call, Throwable t) {
-
                             }
-
                         } );
-
                         onSaleAdapter = new OnSaleAdapter ( respondfiltred,OnSaleItemActivity.this );
                         listView.invalidateViews ();
                         listView.refreshDrawableState();
                         onSaleAdapter.notifyDataSetChanged ();
                         listView.setAdapter ( onSaleAdapter );
-
-
-
                     }
                 }
-
-
             }
-
             @Override
             public void onFailure(Call<List<MarketItemPojo>> call, Throwable t) {
-
             }
-
         } );
     }
-
-
 }
