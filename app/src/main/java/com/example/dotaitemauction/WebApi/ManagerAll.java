@@ -28,9 +28,9 @@ public class ManagerAll extends BaseManager {
         return ourInstance;
     }
 
-    public Call<LoginPojo> login(String userName , String userPass)
+    public Call<LoginPojo> login(String email , String userPass)
     {
-        Call<LoginPojo> x = getRestApi ().loginControl (userName,userPass  );
+        Call<LoginPojo> x = getRestApi ().loginControl (email,userPass);
         return x;
     }
     public Call<RegisterPojo> register(String userMail , String userPass, String userNick , String userSteamId)

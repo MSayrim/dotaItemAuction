@@ -20,12 +20,13 @@ import retrofit2.Callback;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.Call;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface RestApi {
     @FormUrlEncoded
-    @POST("/connections/dotaItems/login.php")
-    Call<LoginPojo> loginControl(@Field( "userName" ) String userName, @Field( "userPass" ) String userPass);
+    @POST("api/Users/Login")
+    Call<LoginPojo> loginControl(@Field( "email" ) String userName, @Field( "userPass" ) String userPass);
 
     @FormUrlEncoded
     @POST("/connections/dotaItems/register.php")

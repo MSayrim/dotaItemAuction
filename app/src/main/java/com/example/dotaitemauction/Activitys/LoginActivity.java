@@ -61,9 +61,11 @@ public class LoginActivity extends AppCompatActivity {
     public boolean login (String userName , String password)
     {
         final Call<LoginPojo> request = ManagerAll.getInstance ().login ( userName,password );
+
         request.enqueue ( new Callback<LoginPojo> () {
             @Override
             public void onResponse(Call<LoginPojo> call, Response<LoginPojo> response) {
+
                 isResult = response.isSuccessful ();
                 currentUser = response.body ();
                 if(response.isSuccessful())
