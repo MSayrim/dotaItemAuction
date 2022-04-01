@@ -25,28 +25,29 @@ public class SaledItemActivity extends AppCompatActivity {
     List<BuyedItemPojo> respondOne;
     SaledItemsAdapter saledItemsAdapter;
     ListView listView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate ( savedInstanceState );
-        setContentView ( R.layout.activity_saled_item );
-        listView = (ListView) findViewById ( R.id.saledItemListView );
-        loader (currentUserId);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_saled_item);
+        listView = (ListView) findViewById(R.id.saledItemListView);
+        loader(currentUserId);
     }
 
-    public void loader(String sellerId)
-    {
-        final Call<List<BuyedItemPojo>> buyItemModelCall = ManagerAll.getInstance().saledItems (sellerId);
-        buyItemModelCall.enqueue ( new Callback<List<BuyedItemPojo>> () {
+    public void loader(String sellerId) {
+        final Call<List<BuyedItemPojo>> buyItemModelCall = ManagerAll.getInstance().saledItems(sellerId);
+        buyItemModelCall.enqueue(new Callback<List<BuyedItemPojo>>() {
             @Override
             public void onResponse(final Call<List<BuyedItemPojo>> call2, final Response<List<BuyedItemPojo>> response) {
-                respondOne = response.body ();
-                saledItemsAdapter = new SaledItemsAdapter ( respondOne,getApplicationContext (),"0" );
-                saledItemsAdapter.notifyDataSetChanged ();
-                listView.setAdapter ( saledItemsAdapter );
+                respondOne = response.body();
+                saledItemsAdapter = new SaledItemsAdapter(respondOne, getApplicationContext(), "0");
+                saledItemsAdapter.notifyDataSetChanged();
+                listView.setAdapter(saledItemsAdapter);
             }
+
             @Override
             public void onFailure(Call<List<BuyedItemPojo>> call, Throwable t) {
             }
-        } );
+        });
     }
 }

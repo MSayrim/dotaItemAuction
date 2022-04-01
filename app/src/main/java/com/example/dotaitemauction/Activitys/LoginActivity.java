@@ -3,6 +3,7 @@ package com.example.dotaitemauction.Activitys;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.dotaitemauction.Models.LoginModel;
 import com.example.dotaitemauction.Models.LoginPojo;
 import com.example.dotaitemauction.R;
 import com.example.dotaitemauction.WebApi.ManagerAll;
@@ -33,176 +34,177 @@ public class LoginActivity extends AppCompatActivity {
     public boolean isResult;
     public static String currentUserId;
     ProgressBar loadingProgressBar;
+    public static String PACKAGE_NAME;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate ( savedInstanceState );
-        setContentView ( R.layout.activity_login );
-        userName = (EditText) findViewById ( R.id.username );
-        password = (EditText) findViewById ( R.id.passwordField );
-        loginButton = (Button) findViewById ( R.id.login );
-        loadingProgressBar = findViewById ( R.id.loading );
-        buttonActivate ();
-        loginButton.setOnClickListener ( new View.OnClickListener () {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+        userName = (EditText) findViewById(R.id.username);
+        password = (EditText) findViewById(R.id.passwordField);
+        loginButton = (Button) findViewById(R.id.login);
+        loadingProgressBar = findViewById(R.id.loading);
+        buttonActivate();
+        PACKAGE_NAME = getApplicationContext().getPackageName();
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if(isDataValid () == true) {
+                if (isDataValid() == true) {
 
-                     login ( userName.getText ().toString (), password.getText ().toString () );
+                    login(userName.getText().toString(), password.getText().toString());
 
-                }
-                else {
-                    register ();
+                } else {
+                    register();
                 }
             }
-        } );
+        });
     }
 
-    public boolean login (String userName , String password)
-    {
-        final Call<LoginPojo> request = ManagerAll.getInstance ().login ( userName,password );
+    public boolean login(String userName, String password) {
+        final Call<LoginPojo> request = ManagerAll.getInstance().login(userName, password);
 
-        request.enqueue ( new Callback<LoginPojo> () {
+        request.enqueue(new Callback<LoginPojo>() {
             @Override
             public void onResponse(Call<LoginPojo> call, Response<LoginPojo> response) {
 
-                isResult = response.isSuccessful ();
-                currentUser = response.body ();
-                if(response.isSuccessful())
-                {
-                    if(response.body ().getId () !=null && response.body ().getUserName () !=null){
-                        loadingProgressBar.setVisibility ( View.VISIBLE );
+                isResult = response.isSuccessful();
+                currentUser = response.body();
+                if (response.isSuccessful()) {
+                    if (response.body().getId() != null && response.body().getUserName() != null) {
+                        loadingProgressBar.setVisibility(View.VISIBLE);
 
-                        Toast.makeText ( getApplicationContext (),"giriş başarılı",Toast.LENGTH_LONG ).show ();
-                        new Handler (  ).postDelayed ( new Runnable () {
+                        Toast.makeText(getApplicationContext(), "giriş başarılı", Toast.LENGTH_LONG).show();
+                        new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                Intent intent = new Intent ( getApplicationContext (),MarketActivity.class );
-                                intent.putExtra ( "id" , currentUser.getId ().toString () );
-                                currentUserId = currentUser.getId ().toString ();
-                                startActivity ( intent );
+                                Intent intent = new Intent(getApplicationContext(), MarketActivity.class);
+                                intent.putExtra("id", currentUser.getId().toString());
+                                currentUserId = currentUser.getId().toString();
+                                startActivity(intent);
 
-                                loadingProgressBar.setVisibility ( View.GONE );
-                                finish ();
+                                loadingProgressBar.setVisibility(View.GONE);
+                                finish();
                             }
-                        },3400 );
-                    }
-                    else {
-                        Toast.makeText ( getApplicationContext (),"Hatalı şifre veya Kullanıcı adı",Toast.LENGTH_LONG ).show ();
+                        }, 3400);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Hatalı şifre veya Kullanıcı adı", Toast.LENGTH_LONG).show();
                     }
                 }
             }
+
             @Override
             public void onFailure(Call<LoginPojo> call, Throwable t) {
             }
-        } );
+        });
         return isResult;
     }
 
-    private void register(){
-        Intent intent2 = new Intent ( getApplicationContext (),RegisterActivity.class );
-        startActivity ( intent2 );
+    private void register() {
+        Intent intent2 = new Intent(getApplicationContext(), RegisterActivity.class);
+        startActivity(intent2);
     }
 
-    private void buttonActivate(){
+    private void buttonActivate() {
         userName.addTextChangedListener(new TextWatcher() {
             public void afterTextChanged(Editable s) {
 
-                if(isDataValid () ==true || isEmpty (userName.getText ().toString (), password.getText ().toString ())==true) {
-                    loginButton.setEnabled (true  );
-                }else {
-                    loginButton.setEnabled (false  );
+                if (isDataValid() == true || isEmpty(userName.getText().toString(), password.getText().toString()) == true) {
+                    loginButton.setEnabled(true);
+                } else {
+                    loginButton.setEnabled(false);
                 }
 
             }
+
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                if(isDataValid () ==true || isEmpty (userName.getText ().toString (), password.getText ().toString ())==true) {
-                    loginButton.setEnabled (true  );
-                }else {
-                    loginButton.setEnabled (false  );
+                if (isDataValid() == true || isEmpty(userName.getText().toString(), password.getText().toString()) == true) {
+                    loginButton.setEnabled(true);
+                } else {
+                    loginButton.setEnabled(false);
                 }
             }
+
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(isDataValid () ==true || isEmpty (userName.getText ().toString (), password.getText ().toString ())==true) {
-                    loginButton.setEnabled (true  );
-                }else {
-                    loginButton.setEnabled (false  );
+                if (isDataValid() == true || isEmpty(userName.getText().toString(), password.getText().toString()) == true) {
+                    loginButton.setEnabled(true);
+                } else {
+                    loginButton.setEnabled(false);
                 }
             }
         });
 
         password.addTextChangedListener(new TextWatcher() {
             public void afterTextChanged(Editable s) {
-                if(isDataValid () ==true || isEmpty (userName.getText ().toString (), password.getText ().toString ())==true) {
-                    loginButton.setEnabled (true  );
-                }else {
-                    loginButton.setEnabled (false  );
+                if (isDataValid() == true || isEmpty(userName.getText().toString(), password.getText().toString()) == true) {
+                    loginButton.setEnabled(true);
+                } else {
+                    loginButton.setEnabled(false);
                 }
 
             }
+
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                if(isDataValid () ==true || isEmpty (userName.getText ().toString (), password.getText ().toString ())==true) {
-                    loginButton.setEnabled (true  );
-                }else {
-                    loginButton.setEnabled (false  );
+                if (isDataValid() == true || isEmpty(userName.getText().toString(), password.getText().toString()) == true) {
+                    loginButton.setEnabled(true);
+                } else {
+                    loginButton.setEnabled(false);
                 }
             }
+
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(isDataValid () ==true || isEmpty (userName.getText ().toString (), password.getText ().toString ())==true) {
-                    loginButton.setEnabled (true  );
-                }else {
-                    loginButton.setEnabled (false  );
+                if (isDataValid() == true || isEmpty(userName.getText().toString(), password.getText().toString()) == true) {
+                    loginButton.setEnabled(true);
+                } else {
+                    loginButton.setEnabled(false);
                 }
             }
         });
     }
 
 
-    private boolean isDataValid(){
+    private boolean isDataValid() {
 
         boolean result = true;
-        if(isUserNameValid ( userName.getText ().toString ()) == true &&
-                isPasswordValid ( password.getText ().toString () ) == true)
-        {
+        if (isUserNameValid(userName.getText().toString()) == true &&
+                isPasswordValid(password.getText().toString()) == true) {
             result = true;
 
-        }
-        else {
+        } else {
             result = false;
         }
 
 
-
         return result;
     }
+
     // A placeholder username validation check
     private boolean isUserNameValid(String username) {
         if (username == null) {
             return false;
         }
-        if (username.contains ( "@" )) {
-            return Patterns.EMAIL_ADDRESS.matcher ( username ).matches ();
+        if (username.contains("@")) {
+            return Patterns.EMAIL_ADDRESS.matcher(username).matches();
         } else {
-            return !username.trim ().isEmpty ();
+            return !username.trim().isEmpty();
         }
     }
 
     // A placeholder password validation check
     private boolean isPasswordValid(String password) {
-        return password != null && password.trim ().length () > 5;
+        return password != null && password.trim().length() > 5;
     }
 
-    private boolean isEmpty(String username , String password){
+    private boolean isEmpty(String username, String password) {
         result = true;
 
-        if(username == null || password ==null ) {
+        if (username == null || password == null) {
             result = true;
-        }
-        else {
+        } else {
             result = false;
         }
 
-        return  result;
+        return result;
     }
 
 }

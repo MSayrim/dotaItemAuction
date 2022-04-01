@@ -1,10 +1,11 @@
 package com.example.dotaitemauction.Models;
 
 public class ItemIdModel {
-    String itemName;
-    String itemId;
 
-    public ItemIdModel(String itemName, String itemId) {
+    private String itemId;
+    private String itemName;
+
+    public ItemIdModel(String itemId, String itemName) {
         this.itemName = itemName;
         this.itemId = itemId;
     }

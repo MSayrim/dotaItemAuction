@@ -20,23 +20,21 @@ public class TempAdapter extends BaseAdapter implements View.OnClickListener {
     private Context context;
     ArrayList<MarketItemPojo> arrayList;
 
-    public TempAdapter(List<MarketItemPojo> items , Context context )
-    {
+    public TempAdapter(List<MarketItemPojo> items, Context context) {
         this.items = items;
         this.context = context;
-
         this.arrayList = new ArrayList<MarketItemPojo>();
         this.arrayList.addAll(items);
     }
 
     @Override
     public int getCount() {
-        return items.size ();
+        return items.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return items.get ( i );
+        return items.get(i);
     }
 
     @Override
@@ -48,14 +46,14 @@ public class TempAdapter extends BaseAdapter implements View.OnClickListener {
     public View getView(int i, View view, ViewGroup viewGroup) {
 
 
-        view = LayoutInflater.from ( context ).inflate ( R.layout.temp_list_content,viewGroup,false );
-        final MarketItemPojo item = items.get ( i );
-        final TextView itemCurrentCount = view.findViewById ( R.id.tempItem );
-        itemCurrentCount.setText ( item.getProductName () );
-        View.OnClickListener yourClickListener = new View.OnClickListener () {
+        view = LayoutInflater.from(context).inflate(R.layout.temp_list_content, viewGroup, false);
+        final MarketItemPojo item = items.get(i);
+        final TextView itemCurrentCount = view.findViewById(R.id.tempItem);
+        itemCurrentCount.setText(item.getProductName());
+        View.OnClickListener yourClickListener = new View.OnClickListener() {
             public void onClick(View v) {
 
-                Toast.makeText ( context,"Hatalı şifre veya Kullanıcı adı2222",Toast.LENGTH_LONG ).show ();
+                Toast.makeText(context, "Hatalı şifre veya Kullanıcı adı2222", Toast.LENGTH_LONG).show();
                 v.callOnClick();
             }
         };
@@ -64,6 +62,6 @@ public class TempAdapter extends BaseAdapter implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        Toast.makeText ( context,"Hatalı şifre veya Kullanıcı adı33333",Toast.LENGTH_LONG ).show ();
+        Toast.makeText(context, "Hatalı şifre veya Kullanıcı adı33333", Toast.LENGTH_LONG).show();
     }
 }

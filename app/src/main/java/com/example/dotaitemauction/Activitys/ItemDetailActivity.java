@@ -43,67 +43,68 @@ public class ItemDetailActivity extends AppCompatActivity {
     String sellerId;
 
     BuyItemModel respondOne;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate ( savedInstanceState );
-        setContentView ( R.layout.activity_item_detail );
-        itemDetailName= (TextView) findViewById(R.id.itemNameDetail);
-        itemDetailCount= (TextView) findViewById(R.id.itemCountDetail);
-        itemDetailSellerNick= (TextView) findViewById(R.id.itemSellerNickDetail);
-        itemDetailSellerSteamId= (TextView) findViewById(R.id.itemSellerSteamIdDetail);
-        itemDetailMethod= (TextView) findViewById(R.id.itemMethodDetail);
-        itemDetailPrice= (TextView) findViewById(R.id.itemPriceDetail);
-        securityText = (TextView) findViewById ( R.id.security);
-        securityCheckText = (EditText) findViewById ( R.id.secuirtyCheck );
-        buyButton = (Button) findViewById ( R.id.buyItemButton );
-        securityCode = new Random().nextInt (9999999-1000000);
-        securityCodeS = securityCode.toString ();
-        securityText.setText ( securityCodeS );
-        final Intent intent = getIntent ();
-        itemDetailName.setText ( intent.getStringExtra ( "name"));
-        itemDetailCount.setText ( intent.getStringExtra ( "count"));
-        itemDetailSellerNick.setText ( intent.getStringExtra ( "nick"));
-        itemDetailSellerSteamId.setText ( intent.getStringExtra ( "steam id"));
-        itemDetailMethod.setText ( intent.getStringExtra ( "method"));
-        itemDetailPrice.setText ( intent.getStringExtra ( "price"));
-        sellerId = intent.getStringExtra ( "sellerId" );
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_item_detail);
+        itemDetailName = (TextView) findViewById(R.id.itemNameDetail);
+        itemDetailCount = (TextView) findViewById(R.id.itemCountDetail);
+        itemDetailSellerNick = (TextView) findViewById(R.id.itemSellerNickDetail);
+        itemDetailSellerSteamId = (TextView) findViewById(R.id.itemSellerSteamIdDetail);
+        itemDetailMethod = (TextView) findViewById(R.id.itemMethodDetail);
+        itemDetailPrice = (TextView) findViewById(R.id.itemPriceDetail);
+        securityText = (TextView) findViewById(R.id.security);
+        securityCheckText = (EditText) findViewById(R.id.secuirtyCheck);
+        buyButton = (Button) findViewById(R.id.buyItemButton);
+        securityCode = new Random().nextInt(9999999 - 1000000);
+        securityCodeS = securityCode.toString();
+        securityText.setText(securityCodeS);
+        final Intent intent = getIntent();
+        itemDetailName.setText(intent.getStringExtra("name"));
+        itemDetailCount.setText(intent.getStringExtra("count"));
+        itemDetailSellerNick.setText(intent.getStringExtra("nick"));
+        itemDetailSellerSteamId.setText(intent.getStringExtra("steam id"));
+        itemDetailMethod.setText(intent.getStringExtra("method"));
+        itemDetailPrice.setText(intent.getStringExtra("price"));
+        sellerId = intent.getStringExtra("sellerId");
 
-        if(sellerId.equals ( currentUserId )){
-            buyButton.setEnabled ( false );
+        if (sellerId.equals(currentUserId)) {
+            buyButton.setEnabled(false);
         }
-        buyButton.setOnClickListener ( new View.OnClickListener () {
+        buyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(securityCheckText.getText ().toString ().equals(securityCodeS))
-                {
+                if (securityCheckText.getText().toString().equals(securityCodeS)) {
                     String verified = "verified";
-                    securityText.setText ( verified );
-                    String one =intent.getStringExtra("sellerId");
-                    String two =intent.getStringExtra( "method");
-                    String three = intent.getStringExtra( "price");
-                    String four = intent.getStringExtra( "count");
-                    String five = intent.getStringExtra( "itemId");
-                    loader (one,currentUserId,two ,three,four,five,verified);
-                    Intent back = new Intent (getApplicationContext (),MarketActivity.class);
-                    startActivity ( back );
-                    finish ();
+                    securityText.setText(verified);
+                    String one = intent.getStringExtra("sellerId");
+                    String two = intent.getStringExtra("method");
+                    String three = intent.getStringExtra("price");
+                    String four = intent.getStringExtra("count");
+                    String five = intent.getStringExtra("itemId");
+                    loader(one, currentUserId, two, three, four, five, verified);
+                    Intent back = new Intent(getApplicationContext(), MarketActivity.class);
+                    startActivity(back);
+                    finish();
                 }
             }
-        } );
+        });
     }
-    public void loader(String sellerId, String buyerId , String paymentMethod,String price ,  String count , String itemId ,  String dogrulamaKodu)
-    {
-        final Call<BuyItemModel> buyItemModelCall = ManagerAll.getInstance().buyItem (sellerId,buyerId,paymentMethod,price,count,itemId,dogrulamaKodu);
-        buyItemModelCall.enqueue ( new Callback<BuyItemModel> () {
+
+    public void loader(String sellerId, String buyerId, String paymentMethod, String price, String count, String itemId, String dogrulamaKodu) {
+        final Call<BuyItemModel> buyItemModelCall = ManagerAll.getInstance().buyItem(sellerId, buyerId, paymentMethod, price, count, itemId, dogrulamaKodu);
+        buyItemModelCall.enqueue(new Callback<BuyItemModel>() {
             @Override
             public void onResponse(final Call<BuyItemModel> call2, final Response<BuyItemModel> response) {
-                respondOne = response.body ();
+                respondOne = response.body();
             }
+
             @Override
             public void onFailure(Call<BuyItemModel> call, Throwable t) {
             }
 
-        } );
+        });
     }
 
 

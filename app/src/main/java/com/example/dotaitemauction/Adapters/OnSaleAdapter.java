@@ -38,8 +38,8 @@ public class OnSaleAdapter extends BaseAdapter {
     private List<MarketItemPojo> items;
     private Context context;
     ArrayList<MarketItemPojo> arrayList;
-    public OnSaleAdapter(List<MarketItemPojo> items , Context context )
-    {
+
+    public OnSaleAdapter(List<MarketItemPojo> items, Context context) {
         this.items = items;
         this.context = context;
 
@@ -49,12 +49,12 @@ public class OnSaleAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return items.size ();
+        return items.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return items.get ( i );
+        return items.get(i);
     }
 
     @Override
@@ -66,20 +66,20 @@ public class OnSaleAdapter extends BaseAdapter {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
 
-        convertView = LayoutInflater.from ( context ).inflate ( R.layout.content_on_sale, parent, false );
-       // convertView = LayoutInflater.from ( context ).inflate ( R.layout.test_content, parent, false );
-        final MarketItemPojo item = items.get ( position );
-        TextView itemName = convertView.findViewById ( R.id.onSaleItemName );
-        final TextView itemCurrentCount = convertView.findViewById ( R.id.currentItemCount );
-        final TextView itemCurrentPrice = convertView.findViewById ( R.id.currentItemPrice );
-        Button dialogButton = convertView.findViewById ( R.id.dialogButton );
-        final FrameLayout frameLayout = convertView.findViewById ( R.id.frameLay );
-        String pic= "https://www.3boyutlucanavar.com/connections/dotaItems/itemPics/"+item.getProductImage () ;
+        convertView = LayoutInflater.from(context).inflate(R.layout.content_on_sale, parent, false);
+        // convertView = LayoutInflater.from ( context ).inflate ( R.layout.test_content, parent, false );
+        final MarketItemPojo item = items.get(position);
+        TextView itemName = convertView.findViewById(R.id.onSaleItemName);
+        final TextView itemCurrentCount = convertView.findViewById(R.id.currentItemCount);
+        final TextView itemCurrentPrice = convertView.findViewById(R.id.currentItemPrice);
+        Button dialogButton = convertView.findViewById(R.id.dialogButton);
+        final FrameLayout frameLayout = convertView.findViewById(R.id.frameLay);
+        String pic = "https://www.3boyutlucanavar.com/connections/dotaItems/itemPics/" + item.getProductImage();
 
-        Picasso.with(context).load(pic).into( new Target (){
+        Picasso.with(context).load(pic).into(new Target() {
             @Override
             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                frameLayout.setBackground(new BitmapDrawable (context.getResources(), bitmap));
+                frameLayout.setBackground(new BitmapDrawable(context.getResources(), bitmap));
             }
 
             @Override
@@ -95,73 +95,67 @@ public class OnSaleAdapter extends BaseAdapter {
         });
 
 
+        itemName.setText(item.getProductName() + " ");
+        itemCurrentCount.setText(item.getCount());
+        itemCurrentPrice.setText(item.getPrice());
 
 
-
-
-
-        itemName.setText ( item.getProductName () + " " );
-        itemCurrentCount.setText ( item.getCount () );
-        itemCurrentPrice.setText ( item.getPrice () );
-
-
-        View.OnClickListener yourClickListener = new View.OnClickListener () {
+        View.OnClickListener yourClickListener = new View.OnClickListener() {
             public void onClick(View v) {
                 //put your desired action here
-                v.callOnClick ();
+                v.callOnClick();
             }
         };
 
 
-
-        dialogButton.setOnClickListener ( new View.OnClickListener () {
+        dialogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                final AlertDialog dialogBuilder1 = new AlertDialog.Builder( context).create();
+                final AlertDialog dialogBuilder1 = new AlertDialog.Builder(context).create();
                 final LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 final View dialogView = inflater.inflate(R.layout.dialog_on_sale, null);
-                dialogBuilder1.getWindow().setBackgroundDrawable(new ColorDrawable (android.graphics.Color.TRANSPARENT));
+                dialogBuilder1.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
                 Toast toast = Toast.makeText(context, "Bilgilendirme mesajı", Toast.LENGTH_LONG);
                 toast.show();
 
                 final EditText itemPrice = (EditText) dialogView.findViewById(R.id.itemPriceET);
                 final EditText itemCount = (EditText) dialogView.findViewById(R.id.itemCountET);
-                TextView itemName2 = (TextView) dialogView.findViewById ( R.id.selectedItemNameText );
+                TextView itemName2 = (TextView) dialogView.findViewById(R.id.selectedItemNameText);
                 Button button1 = (Button) dialogView.findViewById(R.id.selectedItemEditButton);
                 Button button2 = (Button) dialogView.findViewById(R.id.selectedItemDeteleButton);
                 Button button3 = (Button) dialogView.findViewById(R.id.dissmissButton);
 
-                itemPrice.setText ( item.getPrice ().toString () );
-                itemCount.setText ( item.getCount ().toString () );
+                itemPrice.setText(item.getPrice().toString());
+                itemCount.setText(item.getCount().toString());
 
-                itemName2.setText ( item.getProductName () );
+                itemName2.setText(item.getProductName());
 
                 button1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
                         String value = "2";
-                        String value2 = itemCount.getText ().toString ();
+                        String value2 = itemCount.getText().toString();
 
-                        String value3= itemPrice.getText ().toString ();
+                        String value3 = itemPrice.getText().toString();
 
-                        if(!value2.equals ( "" ) ) {
-                            itemCurrentCount.setText ( itemCount.getText ().toString () );
+                        if (!value2.equals("")) {
+                            itemCurrentCount.setText(itemCount.getText().toString());
                         }
-                        if(!value3.equals ( "" ) ) {
-                            itemCurrentPrice.setText ( itemPrice.getText ().toString () );
+                        if (!value3.equals("")) {
+                            itemCurrentPrice.setText(itemPrice.getText().toString());
                         }
 
-                        String temp1 = itemCurrentPrice.getText ().toString ();
-                        String temp2 = itemCurrentCount.getText ().toString ();
-                        String temp3 = item.getSellerId ();
-                        String temp4 = item.getProductId () ;
+                        String temp1 = itemCurrentPrice.getText().toString();
+                        String temp2 = itemCurrentCount.getText().toString();
+                        String temp3 = item.getSellerId();
+                        String temp4 = item.getProductId();
 
-                        edit (temp1 ,temp2,value,temp3,temp4);
-                        itemPrice.setText ( temp1);
-                        itemCount.setText ( temp2 );
+                        edit(temp1, temp2, value, temp3, temp4);
+                        itemPrice.setText(temp1);
+                        itemCount.setText(temp2);
 
                         dialogBuilder1.dismiss();
                     }
@@ -173,48 +167,40 @@ public class OnSaleAdapter extends BaseAdapter {
 
                         String value = "0";
 
-                        String temp1 = itemPrice.getText ().toString ();
-                        String temp2 = itemCount.getText ().toString ();
-                        String temp3 = item.getSellerId ();
-                        String temp4 = item.getProductId () ;
+                        String temp1 = itemPrice.getText().toString();
+                        String temp2 = itemCount.getText().toString();
+                        String temp3 = item.getSellerId();
+                        String temp4 = item.getProductId();
 
-                        edit ( temp1,temp2,value,temp3,temp4 );
-                        dialogBuilder1.dismiss ();
+                        edit(temp1, temp2, value, temp3, temp4);
+                        dialogBuilder1.dismiss();
 
                     }
 
                 });
 
-                button3.setOnClickListener ( new View.OnClickListener () {
+                button3.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        dialogBuilder1.dismiss ();
+                        dialogBuilder1.dismiss();
                     }
-                } );
+                });
 
                 dialogBuilder1.setView(dialogView);
                 dialogBuilder1.show();
             }
-        } );
-
-
-
-
-
-
+        });
 
 
         return convertView;
     }
 
 
-    public void edit(String itemPrice ,String itemCount ,String command,String sellerId, String itemId)
-    {
-        final retrofit2.Call<Response> marketLoader = ManagerAll.getInstance().onSaleItems (itemPrice,itemCount,command,sellerId,itemId);
-        marketLoader.enqueue ( new Callback<Response> () {
+    public void edit(String itemPrice, String itemCount, String command, String sellerId, String itemId) {
+        final retrofit2.Call<Response> marketLoader = ManagerAll.getInstance().onSaleItems(itemPrice, itemCount, command, sellerId, itemId);
+        marketLoader.enqueue(new Callback<Response>() {
             @Override
             public void onResponse(final retrofit2.Call<Response> call2, final retrofit2.Response<Response> response) {
-
 
 
             }
@@ -224,9 +210,8 @@ public class OnSaleAdapter extends BaseAdapter {
 
             }
 
-        } );
+        });
     }
-
 
 
 }

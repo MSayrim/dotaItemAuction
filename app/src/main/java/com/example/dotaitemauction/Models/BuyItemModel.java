@@ -1,13 +1,13 @@
 package com.example.dotaitemauction.Models;
 
 public class BuyItemModel {
-    String sellerId;
-    String buyerId;
-    String paymentMethod;
-    String price;
-    String count;
-    String itemId;
-    String dogrulamaKodu;
+    private String sellerId;
+    private String buyerId;
+    private String paymentMethod;
+    private String price;
+    private String count;
+    private String itemId;
+    private String dogrulamaKodu;
 
     public BuyItemModel(String sellerId, String buyerId, String paymentMethod, String price, String count, String itemId, String dogrulamaKodu) {
         this.sellerId = sellerId;

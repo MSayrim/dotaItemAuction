@@ -30,12 +30,12 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate ( savedInstanceState );
-        setContentView ( R.layout.activity_settings );
-        mailChange = (Button) findViewById ( R.id.changeMail );
-        passChange = (Button) findViewById ( R.id.changePassword );
-        nickChange = (Button) findViewById ( R.id.changeNick );
-        langChange = (Button) findViewById ( R.id.changeLanguage );
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_settings);
+        mailChange = (Button) findViewById(R.id.changeMail);
+        passChange = (Button) findViewById(R.id.changePassword);
+        nickChange = (Button) findViewById(R.id.changeNick);
+        langChange = (Button) findViewById(R.id.changeLanguage);
 
         final AlertDialog dialogBuilder1 = new AlertDialog.Builder(SettingsActivity.this).create();
         final LayoutInflater inflater = this.getLayoutInflater();
@@ -50,7 +50,7 @@ public class SettingsActivity extends AppCompatActivity {
         final LayoutInflater inflater4 = this.getLayoutInflater();
         final View dialogView4 = inflater.inflate(R.layout.dialog_mail, null);
 
-        mailChange.setOnClickListener ( new View.OnClickListener () {
+        mailChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final EditText editText1 = (EditText) dialogMail.findViewById(R.id.changeMailText);
@@ -69,9 +69,9 @@ public class SettingsActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         // DO SOMETHINGS
-                        if(editText1.getText ().toString ().equals ( editText2.getText ().toString () ) || editText3.getText ().toString () != null || editText1.getText ().toString () != null) {
-                            mailchanger ( currentUserId, editText3.getText ().toString (), editText1.getText ().toString () );
-                            dialogBuilder1.dismiss ();
+                        if (editText1.getText().toString().equals(editText2.getText().toString()) || editText3.getText().toString() != null || editText1.getText().toString() != null) {
+                            mailchanger(currentUserId, editText3.getText().toString(), editText1.getText().toString());
+                            dialogBuilder1.dismiss();
                         }
                     }
                 });
@@ -82,8 +82,8 @@ public class SettingsActivity extends AppCompatActivity {
             }
 
 
-        } );
-        passChange.setOnClickListener ( new View.OnClickListener () {
+        });
+        passChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final EditText editText1 = (EditText) dialogPassword.findViewById(R.id.changePasswordText);
@@ -101,9 +101,9 @@ public class SettingsActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
 
-                        if(editText1.getText ().toString ().equals ( editText2.getText ().toString () ) || editText3.getText ().toString () != null || editText1.getText ().toString () != null) {
-                            passwordChanger ( currentUserId, editText3.getText ().toString (), editText1.getText ().toString () );
-                            dialogBuilder3.dismiss ();
+                        if (editText1.getText().toString().equals(editText2.getText().toString()) || editText3.getText().toString() != null || editText1.getText().toString() != null) {
+                            passwordChanger(currentUserId, editText3.getText().toString(), editText1.getText().toString());
+                            dialogBuilder3.dismiss();
                         }
                     }
                 });
@@ -111,8 +111,8 @@ public class SettingsActivity extends AppCompatActivity {
                 dialogBuilder3.show();
 
             }
-        } );
-        nickChange.setOnClickListener ( new View.OnClickListener () {
+        });
+        nickChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final EditText editText1 = (EditText) dialogNick.findViewById(R.id.changeNickText);
@@ -129,9 +129,9 @@ public class SettingsActivity extends AppCompatActivity {
                 button1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if(editText1.getText ().toString ().equals ( editText2.getText ().toString () ) || editText3.getText ().toString () != null || editText1.getText ().toString () != null) {
-                            nickChanger ( currentUserId, editText3.getText ().toString (), editText1.getText ().toString () );
-                            dialogBuilder2.dismiss ();
+                        if (editText1.getText().toString().equals(editText2.getText().toString()) || editText3.getText().toString() != null || editText1.getText().toString() != null) {
+                            nickChanger(currentUserId, editText3.getText().toString(), editText1.getText().toString());
+                            dialogBuilder2.dismiss();
                         }
                     }
                 });
@@ -139,67 +139,61 @@ public class SettingsActivity extends AppCompatActivity {
                 dialogBuilder2.show();
 
             }
-        } );
-        langChange.setOnClickListener ( new View.OnClickListener () {
+        });
+        langChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
             }
-        } );
+        });
     }
 
-    public void passwordChanger(String id ,String password , String newPassword)
-    {
-        final Call<ResultPojo> request = ManagerAll.getInstance ().updatePass ( id,password,newPassword);
-        request.enqueue ( new Callback<ResultPojo> () {
+    public void passwordChanger(String id, String password, String newPassword) {
+        final Call<ResultPojo> request = ManagerAll.getInstance().updatePass(id, password, newPassword);
+        request.enqueue(new Callback<ResultPojo>() {
             @Override
             public void onResponse(Call<ResultPojo> call, Response<ResultPojo> response) {
             }
+
             @Override
             public void onFailure(Call<ResultPojo> call, Throwable t) {
             }
-        } );
+        });
     }
 
-    public void mailchanger(String id ,String password , String newMail)
-    {
-        final Call<ResultPojo> request = ManagerAll.getInstance ().updateMail ( id,password,newMail);
-        request.enqueue ( new Callback<ResultPojo> () {
+    public void mailchanger(String id, String password, String newMail) {
+        final Call<ResultPojo> request = ManagerAll.getInstance().updateMail(id, password, newMail);
+        request.enqueue(new Callback<ResultPojo>() {
             @Override
             public void onResponse(Call<ResultPojo> call, Response<ResultPojo> response) {
-                String result = response.body ().getResult ().toString ();
+                String result = response.body().getResult().toString();
                 Toast toast = Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG);
-                toast.setGravity( Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
+                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
                 toast.show();
             }
+
             @Override
             public void onFailure(Call<ResultPojo> call, Throwable t) {
             }
-        } );
+        });
     }
 
-    public void nickChanger(String id ,String password , String newNick)
-    {
-        final Call<ResultPojo> request = ManagerAll.getInstance ().updateNick ( id,password,newNick);
-        request.enqueue ( new Callback<ResultPojo> () {
+    public void nickChanger(String id, String password, String newNick) {
+        final Call<ResultPojo> request = ManagerAll.getInstance().updateNick(id, password, newNick);
+        request.enqueue(new Callback<ResultPojo>() {
             @Override
             public void onResponse(Call<ResultPojo> call, Response<ResultPojo> response) {
-                String result = response.body ().toString ();
+                String result = response.body().toString();
                 Toast toast = Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG);
-                toast.setGravity( Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
+                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
                 toast.show();
 
             }
+
             @Override
             public void onFailure(Call<ResultPojo> call, Throwable t) {
             }
-        } );
+        });
     }
-
-
-
-
-
-
 
 
 }

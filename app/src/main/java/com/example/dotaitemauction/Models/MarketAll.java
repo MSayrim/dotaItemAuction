@@ -1,41 +1,41 @@
 package com.example.dotaitemauction.Models;
 
-public class MarketAll{
-	private String productGame;
-	private String productId;
-	private String productPic;
-	private String productHero;
-	private String productName;
+public class MarketAll {
+    private String id;
+    private String name;
+    private String tumbnail;
+    private String itemHero;
+    private String itemGame;
 
-	public String getProductGame(){
-		return productGame;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public String getProductId(){
-		return productId;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getProductPic(){
-		return productPic;
-	}
+    public String getTumbnail() {
+        return tumbnail;
+    }
 
-	public String getProductHero(){
-		return productHero;
-	}
+    public String getItemHero() {
+        return itemHero;
+    }
 
-	public String getProductName(){
-		return productName;
-	}
+    public String getItemGame() {
+        return itemGame;
+    }
 
-	@Override
- 	public String toString(){
-		return 
-			"MarketAll{" + 
-			"productGame = '" + productGame + '\'' + 
-			",productId = '" + productId + '\'' + 
-			",productPic = '" + productPic + '\'' + 
-			",productHero = '" + productHero + '\'' + 
-			",productName = '" + productName + '\'' + 
-			"}";
-		}
+    @Override
+    public String toString() {
+        return
+                "MarketAll{" +
+                        "id = '" + id + '\'' +
+                        ",name = '" + name + '\'' +
+                        ",tumbnail = '" + tumbnail + '\'' +
+                        ",itemHero = '" + itemHero + '\'' +
+                        ",itemGame = '" + itemGame + '\'' +
+                        "}";
+    }
 }

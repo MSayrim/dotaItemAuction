@@ -1,23 +1,23 @@
 package com.example.dotaitemauction.Models;
 
-public class MarketItemCountPojo{
-	private String itemId;
-	private String itemCount;
+public class MarketItemCountPojo {
+    private String id;
+    private String count;
 
-	public String getItemId(){
-		return itemId;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public String getItemCount(){
-		return itemCount;
-	}
+    public String getCount() {
+        return count;
+    }
 
-	@Override
- 	public String toString(){
-		return 
-			"MarketItemCountPojo{" + 
-			"itemId = '" + itemId + '\'' + 
-			",itemCount = '" + itemCount + '\'' + 
-			"}";
-		}
+    @Override
+    public String toString() {
+        return
+                "MarketItemCountPojo{" +
+                        "itemId = '" + id + '\'' +
+                        ",itemCount = '" + count + '\'' +
+                        "}";
+    }
 }

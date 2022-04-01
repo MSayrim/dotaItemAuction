@@ -1,6 +1,9 @@
 package com.example.dotaitemauction.Adapters;
 
+import static com.example.dotaitemauction.Activitys.LoginActivity.PACKAGE_NAME;
+
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -26,7 +29,6 @@ import java.util.List;
 import java.util.Locale;
 
 
-
 public class MarketListAdapter extends BaseAdapter {
 
     private List<MarketAll> items;
@@ -34,8 +36,7 @@ public class MarketListAdapter extends BaseAdapter {
     private List<MarketItemCountPojo> itemCount;
     ArrayList<MarketAll> arrayList;
 
-    public MarketListAdapter(List<MarketAll> items , Context context,List<MarketItemCountPojo> itemCount)
-    {
+    public MarketListAdapter(List<MarketAll> items, Context context, List<MarketItemCountPojo> itemCount) {
         this.items = items;
         this.context = context;
         this.arrayList = new ArrayList<MarketAll>();
@@ -45,26 +46,38 @@ public class MarketListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return items.size ();
+        return items.size();
     }
+
     @Override
     public Object getItem(int i) {
-        return items.get ( i );
+        return items.get(i);
     }
+
     @Override
     public long getItemId(int i) {
         return 0;
     }
+
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        convertView = LayoutInflater.from ( context ).inflate ( R.layout.content_market,parent,false );
-        TextView NameView = convertView.findViewById(R.id.itemName );
+        convertView = LayoutInflater.from(context).inflate(R.layout.content_market, parent, false);
+        TextView NameView = convertView.findViewById(R.id.itemName);
         TextView StockView = convertView.findViewById(R.id.itemStock);
         MarketAll item = items.get(position);
-        NameView.setText( item.getProductName () +" " );
-        StockView.setText (itemCount.get ( position ).getItemCount () + " " );
-        String pic= "https://www.3boyutlucanavar.com/connections/dotaItems/itemPics/"+item.getProductPic ();
-        View.OnClickListener yourClickListener = new View.OnClickListener () {
+        NameView.setText(item.getItemGame() + " ");
+        StockView.setText(itemCount.get(position).getCount() + " ");
+
+
+        String pic = "b" + item.getTumbnail();
+        int resourceId = findResource(pic);
+
+        if (resourceId == 0) {
+            resourceId = R.drawable.bcktalons;
+        }
+
+
+        View.OnClickListener yourClickListener = new View.OnClickListener() {
             public void onClick(View v) {
                 //put your desired action here
                 v.callOnClick();
@@ -72,11 +85,12 @@ public class MarketListAdapter extends BaseAdapter {
         };
 //.transform ( new RoundedTransformation (15,5) )
         final View finalConvertView = convertView;
-        Picasso.with(context).load(pic).into( new Target (){
+        Picasso.with(context).load(resourceId).resize(960, 540).into(new Target() {
             @Override
             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                finalConvertView.setBackground(new BitmapDrawable (context.getResources(), bitmap));
+                finalConvertView.setBackground(new BitmapDrawable(context.getResources(), bitmap));
             }
+
             @Override
             public void onBitmapFailed(final Drawable errorDrawable) {
                 Log.d("TAG", "FAILED");
@@ -90,24 +104,19 @@ public class MarketListAdapter extends BaseAdapter {
         });
 
 
-
-
-
-
-
         return convertView;
     }
-    public void filter(String charText){
-        charText = charText.toLowerCase( Locale.getDefault());
+
+    public void filter(String charText) {
+        charText = charText.toLowerCase(Locale.getDefault());
         items.clear();
-        if (charText.length()==0){
+        if (charText.length() == 0) {
             items.addAll(arrayList);
-        }
-        else {
-            for (MarketAll marketItem : arrayList){
-                if (marketItem.getProductName ().toLowerCase(Locale.getDefault())
-                        .contains(charText)){
-                    items.add (marketItem);
+        } else {
+            for (MarketAll marketItem : arrayList) {
+                if (marketItem.getItemGame().toLowerCase(Locale.getDefault())
+                        .contains(charText)) {
+                    items.add(marketItem);
                 }
             }
         }
@@ -115,20 +124,21 @@ public class MarketListAdapter extends BaseAdapter {
     }
 
 
-
     @Override
-    public boolean areAllItemsEnabled()
-    {
+    public boolean areAllItemsEnabled() {
         return true;
     }
 
     @Override
-    public boolean isEnabled(int arg0)
-    {
+    public boolean isEnabled(int arg0) {
         return true;
     }
 
+    public int findResource(String pic) {
 
+        return context.getResources().getIdentifier(pic, "drawable", PACKAGE_NAME);
+
+    }
 
 
 }
